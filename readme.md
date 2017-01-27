@@ -18,7 +18,7 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - Wifi
 - BT (bluetooth)
 - OV5640 (camera)
-- HDMI 720P / 1080P
+- HDMI 1080P
 - GbE (Gigabit ethernet)
 
 This OS image is based on the works and ideas of
@@ -31,17 +31,18 @@ This OS image is based on the works and ideas of
 - FA's script ideas
 - linux-sunxi (http://linux-sunxi.org)
 - Jemk (https://github.com/jemk/cedrus)
+- Armbian tips
 - @lex (Alexander Finger)
 
 
-This Image is intended to run with other A64 boards with or without eMMC just by updating the Device Tree Blob with specific settings for different board.
+This Image is intended to run on others A64 boards with or without eMMC just by updating the Device Tree Blob with specific settings for different board.
 
-Things that work with this Image
+Things that works with this Image
 --------------------------------
 
-- Firefox
+- Firefox (64 bit) - stock version
 - Guvcview
-- MJPG-streamer
+- MJPG-streamer (unstable - removed)
 - ffmepg 3.14 with cedrus (H264 encoding)
 
 Things you will not find in this image
@@ -66,19 +67,37 @@ Before you start downloading and flashing you should pay attention to this
 Screenshots
 -----------
 
+Bluetooth
 ![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/bluetooth.png)
 
-
+Wifi
 ![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/wifi.png)
+
+Firefox
+![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/firefox.png)
+
+Guvcview
+![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/guvcview.png)
+
+Sound (ALSA)
+![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/sound.png)
+
 
 Installation
 ------------
 
-### Option 1: Manual installation
+This is a non orthodox way of flashing the image onto SD card and eMMC.
+We will do the following steps:
 
+  1. Download firmware
+  2. Format SD card, and unzip kernel
+  3. Boot from SD card to detect the eMMC
+  4. Format eMMC and unzip kernel
 
+There will be no need for requesting unused space on SD card or eMMC, we don't use '.img' file.
 
-### Option 2: Semi automated installation
+### Manual installation
+
 
 *** WIP ***
 
@@ -86,3 +105,4 @@ History Log:
 ===========
 * initial commit (readme file)
 * created on 26/01/2017
+* fix readme (wip)
