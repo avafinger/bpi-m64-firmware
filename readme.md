@@ -5,21 +5,37 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working:
 
 - eMMC
 - Wifi
-- BT
-- OV5640
+- BT (bluetooth)
+- OV5640 (camera)
 - HDMI 720P / 1080P
-- GbE
+- GbE (Gigabit ethernet)
 
 This OS image is based on the works and ideas of:
 
 - Bpi-tools
-- Longsleep's kernel 3.10.102
+- Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64)
 - @tkaiser's script
-- @phelum's BT tools
+- @phelum's BT tools (https://github.com/phelum/CT_Bluetooth)
 - FA's script ideas
 - linux-sunxi (http://linux-sunxi.org)
 - Jemk (https://github.com/jemk/cedrus)
 - @lex (Alexander Finger)
+
+LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight and fast and uses less RAM and less CPU while being a feature rich desktop environment.
+If you want a richer desktop environment (but slower) you can install Ubuntu MATE on top of this Image and later de-install LXDE.
+I use LXDE just because it is very fast, snappy  and responsive!
+You can always improve, tweak and tune the way you want at any time.
+This is a very LEAN and MEAN OS image to play and learn how to extend it.
+
+Before you start downloading and flashing you should pay attention to this:
+
+- We need a linux box to flash the Image into SD CARD, i use LUbuntu 12.04 but could be any distro.
+- Grab a good SD CARD, 80% of the issues you may have is due to counterfeit or bad sd card brand.
+- We need 8GB SD CARD, the OS Image fits in a 4GB but need more space as you will see.
+- Get a good PSU with at least 2.5A (be in the safe side).
+- Make sure you have HDMI (don't use HDMI to DVI if you can).
+- Make sure HDMI is connected to the board very tight or you may experience some flickering or the image will not appear.
+
 
 Screenshots
 -----------
@@ -35,6 +51,8 @@ Installation
 ### Option 1: Manual installation
 
 
+
+### Option 2: scriptable installation
 
 *** WIP ***
 
