@@ -1,7 +1,18 @@
 Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 ================================================================
 
-This is a preliminary LXDE OS image for the Banana Pi M64 with fully working:
+LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
+and fast and uses less RAM and less CPU while being a feature rich desktop environment.
+
+If you want a richer desktop environment (but slower) you can install 
+Ubuntu MATE on top of this Image and later de-install LXDE.
+
+I use LXDE just because it is very fast, snappy  and responsive!
+You can always improve, tweak and tune the way you want at any time.
+This is a very LEAN and MEAN OS image to play and learn how to extend it.
+
+This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
+----------------------------------------------------------------------------
 
 - eMMC
 - Wifi
@@ -10,7 +21,8 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working:
 - HDMI 720P / 1080P
 - GbE (Gigabit ethernet)
 
-This OS image is based on the works and ideas of:
+This OS image is based on the works and ideas of
+-------------------------------------------------
 
 - Bpi-tools
 - Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64)
@@ -21,11 +33,24 @@ This OS image is based on the works and ideas of:
 - Jemk (https://github.com/jemk/cedrus)
 - @lex (Alexander Finger)
 
-LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight and fast and uses less RAM and less CPU while being a feature rich desktop environment.
-If you want a richer desktop environment (but slower) you can install Ubuntu MATE on top of this Image and later de-install LXDE.
-I use LXDE just because it is very fast, snappy  and responsive!
-You can always improve, tweak and tune the way you want at any time.
-This is a very LEAN and MEAN OS image to play and learn how to extend it.
+
+This Image is intended to run with other A64 boards with or without eMMC just by updating the Device Tree Blob with specific settings for different board.
+
+Things that work with this Image
+--------------------------------
+
+- Firefox
+- Guvcview
+- MJPG-streamer
+- ffmepg 3.14 with cedrus (H264 encoding)
+
+Things you will not find in this image
+--------------------------------------
+
+- 3D Mali acceleration
+- Firefox with HW acceleration
+- ssh not installed (it is a Desktop Image, if you need it just install it)
+
 
 Before you start downloading and flashing you should pay attention to this
 --------------------------------------------------------------------------
@@ -53,7 +78,7 @@ Installation
 
 
 
-### Option 2: scriptable installation
+### Option 2: Semi automated installation
 
 *** WIP ***
 
