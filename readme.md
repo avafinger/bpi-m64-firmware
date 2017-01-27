@@ -27,7 +27,8 @@ I use LXDE just because it is very fast, snappy  and responsive!
 You can always improve, tweak and tune the way you want at any time.
 This is a very LEAN and MEAN OS image to play and learn how to extend it.
 
-Before you start downloading and flashing you should pay attention to this:
+Before you start downloading and flashing you should pay attention to this
+--------------------------------------------------------------------------
 
 - We need a linux box to flash the Image into SD CARD, i use LUbuntu 12.04 but could be any distro.
 - Grab a good SD CARD, 80% of the issues you may have is due to counterfeit or bad sd card brand.
