@@ -35,7 +35,6 @@ This OS image is based on the works and ideas of
 - @lex (Alexander Finger)
 
 
-This Image is intended to run on others A64 boards with or without eMMC just by updating the Device Tree Blob with specific settings for different board.
 
 Things that works with this Image
 --------------------------------
@@ -82,6 +81,8 @@ Guvcview
 Sound (ALSA)
 ![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/sound.png)
 
+MJPG-streamer (not working - investigating..)
+![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/mjpg-streamer.png)
 
 Installation
 ------------
