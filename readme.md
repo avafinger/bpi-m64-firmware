@@ -109,7 +109,11 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             cd m64
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
+            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin bpi-m64-firmwar
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_emmc.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_emmc.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_sd.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_sd.sh
 
 
     b.  **Get the kernel and check MD5**
@@ -136,9 +140,21 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             [99023.162518] sd 4:0:0:0: [sdc] Assuming drive cache: write through
             [99023.168535]  sdc: sdc1 sdc2
 
-        in this example our sd card is /dev/sdc , it could be /dev/sdb if you have only one HDD on your host PC
+        in this example our sd card is /dev/sdc if we use an SD CARD reader (USB), it could be /dev/sdb if you have only one HDD on your host PC
+        so the format is something like /dev/sdX where X is [b,c,d..,g]
 
+    e.  **Start flashing... (Warning, make sure you get the correct device or you may WIPE your HDD)**
+
+            sudo chmod +x *.sh
+            sudo ./format_sd.sh /dev/sdc
+            sudo ./flash_sd.sh /dev/sdc
+
+    Now you have SD card with Falshed kernel in it, you can now boot up with this SD card and detect the eMMC
   
+            user: ubuntu
+            pass: ubuntu
+  
+
 *** WIP ***
 
 History Log:
