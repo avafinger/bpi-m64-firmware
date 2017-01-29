@@ -107,11 +107,8 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
             mkdir -p m64
             cd m64
-            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin bpi-m64-firmwar
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_emmc.sh
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_emmc.sh
+            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
             wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_sd.sh
             wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_sd.sh
 
@@ -129,7 +126,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
     c.  **Insert a new SD card (get a good one, 8 GB or > )**
 
-    d.  **Find your card**
+    d.  **Find your SD card**
 
             dmesg|tail
             [97286.659006] sdc: detected capacity change from 15523119104 to 0
@@ -149,11 +146,40 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             sudo ./format_sd.sh /dev/sdc
             sudo ./flash_sd.sh /dev/sdc
 
-    Now you have SD card with Falshed kernel in it, you can now boot up with this SD card and detect the eMMC
+    Now you have SD card with Falshed kernel in it, you can now boot up bpi-m64 with this SD card and it will detect the eMMC:
   
             user: ubuntu
             pass: ubuntu
   
+3.  Flashing eMMC
+
+    a.  **After you boot up with SD card, type:**
+
+            mkdir -p m64
+            cd m64
+            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
+            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_emmc.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_emmc.sh
+
+
+    b.  **Get the kernel and check MD5**
+
+            wget https://drive.google.com/open?id=0B7A7OPBC-aN7blVEcjk5aFppZG8
+            md5sum rootfs_m64_rc3.tar.gz 
+            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
+
+            wget https://drive.google.com/open?id=0B7A7OPBC-aN7RktMMHo5ekx3Znc
+            md5sum boot_m64_rc3.tar.gz 
+            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
+
+    e.  **Start flashing... (eMMC)**
+
+            sudo chmod +x *.sh
+            sudo ./format_sd.sh
+            sudo ./flash_sd.sh
+
+    If everything is OK you can now shutdown and boot up without the SD card.
 
 *** WIP ***
 
