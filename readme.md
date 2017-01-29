@@ -103,8 +103,10 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 2.  Download the files and check MD5
 
-    a.  **In shell type:**
+    a.  **In shell type (host PC):**
 
+            mkdir -p m64
+            cd m64
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
             wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
@@ -120,6 +122,21 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             md5sum boot_m64_rc3.tar.gz 
             7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
 
+
+    c.  **Insert a new SD card (get a good one, 8 GB or > )**
+
+    d.  **Find your card**
+
+            dmesg|tail
+            [97286.659006] sdc: detected capacity change from 15523119104 to 0
+            [99023.137526] sd 4:0:0:0: [sdc] 30318592 512-byte logical blocks: (15.5 GB/14.4 GiB)
+            [99023.147516] sd 4:0:0:0: [sdc] No Caching mode page found
+            [99023.147521] sd 4:0:0:0: [sdc] Assuming drive cache: write through
+            [99023.162514] sd 4:0:0:0: [sdc] No Caching mode page found
+            [99023.162518] sd 4:0:0:0: [sdc] Assuming drive cache: write through
+            [99023.168535]  sdc: sdc1 sdc2
+
+        in this example our sd card is /dev/sdc , it could be /dev/sdb if you have only one HDD on your host PC
 
   
 *** WIP ***
