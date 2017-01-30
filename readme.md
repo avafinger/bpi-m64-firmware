@@ -24,16 +24,15 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 This OS image is based on the works and ideas of
 -------------------------------------------------
 
-- Bpi-tools
+- Bpi-tools (https://github.com/BPI-SINOVOIP/bpi-tools)
 - Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64)
 - @tkaiser's script
 - @phelum's BT tools (https://github.com/phelum/CT_Bluetooth)
 - FA's script ideas
 - linux-sunxi (http://linux-sunxi.org)
 - Jemk (https://github.com/jemk/cedrus)
-- Armbian tips
+- Armbian tips (https://www.armbian.com/)
 - @lex (Alexander Finger)
-
 
 
 Things that works with this Image
@@ -50,6 +49,7 @@ Things you will not find in this image
 - 3D Mali acceleration
 - Firefox with HW acceleration
 - ssh not installed (it is a Desktop Image, if you need it just install it)
+- 2D optimization
 
 
 Before you start downloading and flashing you should pay attention to this
