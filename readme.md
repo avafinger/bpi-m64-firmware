@@ -28,7 +28,7 @@ This OS image is based on the works and ideas of
 - Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64)
 - @tkaiser's script
 - @phelum's BT tools (https://github.com/phelum/CT_Bluetooth)
-- FA's script ideas
+- FA's script ideas (http://wiki.friendlyarm.com/wiki/index.php/NanoPi_A64#Make_Your_Own_OS.28Compile_BSP.29)
 - linux-sunxi (http://linux-sunxi.org)
 - Jemk (https://github.com/jemk/cedrus)
 - Armbian tips (https://www.armbian.com/)
