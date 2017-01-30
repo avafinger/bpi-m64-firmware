@@ -80,7 +80,7 @@ mkfs.vfat -n emmcboot -I ${out}1
 # Create ext4 file system for rootfs
 mkfs.ext4 -F -b 4096 -E stride=2,stripe-width=1024 -L emmcrootfs ${out}p2
 sync
-sudo tune2fs -O ^has_journal ${out}2
+sudo tune2fs -O ^has_journal ${out}p2
 sync
 
 pt_ok "Done - Geometry created and eMMC '$out' formatted, now flash the image with ./flash_emmc.sh"
