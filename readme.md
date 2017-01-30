@@ -173,13 +173,16 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             md5sum boot_m64_rc3.tar.gz 
             7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
 
-    e.  **Start flashing... (eMMC)**
+    c.  **Start flashing... (eMMC)**
 
             sudo chmod +x *.sh
             sudo ./format_sd.sh
             sudo ./flash_sd.sh
 
     If everything is OK you can now shutdown and boot up without the SD card.
+
+
+If you find wrong or misleading information, please let me know and i will fix ASAP.
 
 *** WIP ***
 
@@ -188,3 +191,4 @@ History Log:
 * initial commit (readme file)
 * created on 26/01/2017
 * fix readme (wip)
+* readme with instructions (wip)
