@@ -74,11 +74,11 @@ sync
 
 pt_warn "Formating $out ..."
 # Create boot file system (VFAT)
-dd if=/dev/zero bs=1M count=${boot_size} of=${out}1
+dd if=/dev/zero bs=1M count=${boot_size} of=${out}p1
 mkfs.vfat -n emmcboot -I ${out}1
 
 # Create ext4 file system for rootfs
-mkfs.ext4 -F -b 4096 -E stride=2,stripe-width=1024 -L emmcrootfs ${out}2
+mkfs.ext4 -F -b 4096 -E stride=2,stripe-width=1024 -L emmcrootfs ${out}p2
 sync
 sudo tune2fs -O ^has_journal ${out}2
 sync
