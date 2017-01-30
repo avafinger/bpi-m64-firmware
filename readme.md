@@ -184,6 +184,18 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 If you find wrong or misleading information, please let me know and i will fix ASAP.
 
+
+Troublehooting
+--------------
+
+1.  Nothing on my LCD/Monitor TV display
+
+    a.  **Make sure the HDMI conector is well connected to the board**
+
+    b.  **Make sure your LCD/Monitor TV is 1080P capable, the board will boot in HDMI 1080P mode only**
+
+    c.  **Don't use DVI to HDMI**
+
 *** WIP ***
 
 History Log:
