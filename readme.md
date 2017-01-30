@@ -176,8 +176,8 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
     c.  **Start flashing... (eMMC)**
 
             sudo chmod +x *.sh
-            sudo ./format_sd.sh
-            sudo ./flash_sd.sh
+            sudo ./format_emmc.sh
+            sudo ./flash_emmc.sh
 
     If everything is OK you can now shutdown and boot up without the SD card.
 
