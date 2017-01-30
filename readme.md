@@ -184,6 +184,63 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 If you find wrong or misleading information, please let me know and i will fix ASAP.
 
+Initial setup
+-------------
+
+1.  DHCP is activated by default
+
+2.  Eth0 is not managed, if you connect using Wifi and later wish to get back
+    to DHCP you must issue a ifdown and ifup command to renew DHCP
+
+3.  Output mode is HDMI 1080p60 , to change it to 720p you need to generate a new DTB
+    and set it to 720p or any other HDMI mode inside the DTB
+
+
+mini FAQ (Ubuntu Xenial 16.04)
+------------------------------
+
+1.  How to update the distro
+
+    a.  **Use command line:**
+
+            sudo apt-get update
+            sudo apt-get dist-upgrade
+            sync
+
+
+2.  How to change keyboard layout
+
+    a.  **Use command line:**
+
+            sudo dpkg-reconfigure keyboard-configuration
+
+
+3.  How to change timezone
+
+    a.  **type in command line:**
+
+            timedatectl list-timezones
+            sudo timedatectl set-timezone desired_timezone
+            sudo timedatectl set-timezone America/New_York
+
+
+4.  How to change language
+
+    Install your language package and generate new locale.
+
+
+5.  How to play MP4 videos ( MPEG1, MPEG2, MPEG4 )
+
+    Follow libvdpau-sunxi and install LIBVDPAU and instal mpv
+    
+
+6.  How to install Ubuntu MATE
+
+            sudo apt-get update
+            sudo apt-get dist-upgrade
+            sync
+            sudo apt-get install ubuntu-mate-desktop
+
 
 Troublehooting
 --------------
@@ -195,6 +252,34 @@ Troublehooting
     b.  **Make sure your LCD/Monitor TV is 1080P capable, the board will boot in HDMI 1080P mode only**
 
     c.  **Don't use DVI to HDMI**
+
+2.  Moving windows on screen is slow
+
+    **Install Metacity**
+
+3.  Camera is not working
+
+    a.  **Make sure you connect the sensor**
+
+    b.  **The camera connector at the board side is really horrible, you need to make sure the FPC cable touch the contacts (They should change it on next board revision)**
+
+4.  Board does not boot
+
+    a.  **Watch for some signs during normal boot**
+        
+        - Mouse should blink twice
+
+        - Ethernet connector will blink and show some activities
+
+        - Your monitor will switch to HDMI 1080p
+
+    b.  **If you don't see any of this signs during boot, you most likely run into the following**
+
+        - Bad SD card even if does not show bad track or errors, try with another brand and size
+
+        - PSU Under power or under voltage, use a good PSU, at least 2.5A and 5v output garantee
+
+
 
 *** WIP ***
 
