@@ -246,6 +246,37 @@ mini FAQ (Ubuntu Xenial 16.04)
             sudo apt-get install ubuntu-mate-desktop
 
 
+7.  How to change Hostname
+
+    Suppose you want to change the hostname to "myhostname":
+
+    a.  **edit the file /etc/hostname and change the contents to: myhostname**
+
+            sudo leafpad /etc/hostname
+            change contents to: myhostname
+
+    b.  **edit the file /etc/hosts and change or add the contents**
+
+            sudo leafpad /etc/hosts
+            change/add the following
+
+            127.0.0.1	localhost
+            127.0.1.1	myhostname
+
+            # The following lines are desirable for IPv6 capable hosts
+            ::1     ip6-localhost ip6-loopback
+            fe00::0 ip6-localnet
+            ff00::0 ip6-mcastprefix
+            ff02::1 ip6-allnodes
+            ff02::2 ip6-allrouters
+
+    c.  **sync and reboot**
+
+            sync
+            sudo reboot
+
+
+
 Troublehooting
 --------------
 
