@@ -99,7 +99,11 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 ### Manual installation (download the binaries)
 
-1.  Install wget and fdisk for your distro
+1.  We need wget,md5sum and fdisk, install it if not already
+
+            sudo apt-get install wget
+            sudo apt-get install md5sum
+
 
 2.  Download the files and check MD5
 
