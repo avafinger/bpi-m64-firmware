@@ -270,6 +270,8 @@ Troublehooting
 4.  Board does not boot
 
     a.  **Watch for some signs during normal boot**
+
+        - Wait a few seconds, BROM waits for FEL button and then proceed loading
         
         - Mouse should blink twice
 
@@ -277,12 +279,17 @@ Troublehooting
 
         - Your monitor will switch to HDMI 1080p
 
-    b.  **If you don't see any of this signs during boot, you most likely run into the following**
+    b.  **If you don't see any of this signs during boot, you most likely have run into the following**
 
         - Bad SD card even if does not show bad track or errors, try with another brand and size
 
-        - PSU Under power or under voltage, use a good PSU, at least 2.5A and 5v output garantee
+        - PSU Under power or under voltage, use a good PSU, at least 2.5A and 5v output guarantee
 
+    c.  **Check for SD card integrity**
+
+        sudo fsck.vfat -a /dev/sdX1 (where X is your SD card letter [b,c..]
+
+        sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..]
 
 
 *** WIP ***
