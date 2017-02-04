@@ -56,7 +56,9 @@ Before you start downloading and flashing you should pay attention to this
 --------------------------------------------------------------------------
 
 - We need a linux box to flash the Image into SD CARD, i use LUbuntu 12.04 but could be any distro.
-- Grab a good SD CARD, 80% of the issues you may have is due to counterfeit or bad sd card brand.
+- Grab a good SD CARD (*), 80% of the issues you may have is due to counterfeit or bad sd card brand.
+- SD/HC Card reader can also be a source of problems writing to a good SD CARD.
+  (*) If you can be sure your SD card is fine and you still have problems, try using another SDHC card reader
 - We need 8GB SD CARD, the OS Image fits in a 4GB but need more space as you will see.
 - Get a good PSU with at least 2.5A (be on the safe side).
 - Make sure you have HDMI (don't use HDMI to DVI if you can).
