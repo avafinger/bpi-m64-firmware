@@ -1,6 +1,10 @@
 Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 ================================================================
 
+
+	Kernel has been updated to version 3.10.104, see **Updating Kernel section**
+
+
 LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
 and fast and uses less RAM and less CPU while being a feature rich desktop environment.
 
@@ -25,7 +29,7 @@ This OS image is based on the works and ideas of
 -------------------------------------------------
 
 - Bpi-tools (https://github.com/BPI-SINOVOIP/bpi-tools)
-- Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64)
+- Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64) - Updated to 3.10.104
 - @tkaiser's script
 - @phelum's BT tools (https://github.com/phelum/CT_Bluetooth)
 - FA's script ideas (http://wiki.friendlyarm.com/wiki/index.php/NanoPi_A64#Make_Your_Own_OS.28Compile_BSP.29)
@@ -67,6 +71,12 @@ Before you start downloading and flashing you should pay attention to this
 
 Screenshots
 -----------
+
+Kernel 3.10.104 (fix for 'Dirty COW' and camera with AF)
+![New kernel version 3.10.104](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/new_kernel_3.10.104.png)
+
+Camera with AF (Auto Focus) enabled
+![camera_AF](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/camera_AF.png)
 
 Bluetooth
 ![bluetooth](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/bluetooth.png)
@@ -189,6 +199,134 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 
 If you find wrong or misleading information, please let me know and i will fix ASAP.
+
+Updating Kernel to 3.10.104
+---------------------------
+
+You can update to the latest kernel with a fix for the **DIRTY COW** vulnerability
+and some minor improvements on fs, overlays, camera AF, etc..
+
+The update will be done manually as below:
+
+1.  Update SD card with latest kernel 3.10.104
+
+    Insert the SD CARD in SDHC card reader with the Image (kernel 3.10.102) on your **HOST PC running linux** and find the correct device number/letter
+
+    a.  **type in command line:**
+
+		dmesg | tail
+		[23273.595102] EXT4-fs (sdc2): mounted filesystem without journal. Opts: (null)
+		[24835.068927] sdc: detected capacity change from 15523119104 to 0
+		[26540.804172] sd 4:0:0:0: [sdc] 30318592 512-byte logical blocks: (15.5 GB/14.4 GiB)
+		[26540.814172] sd 4:0:0:0: [sdc] No Caching mode page found
+		[26540.814177] sd 4:0:0:0: [sdc] Assuming drive cache: write through
+		[26540.829166] sd 4:0:0:0: [sdc] No Caching mode page found
+		[26540.829171] sd 4:0:0:0: [sdc] Assuming drive cache: write through
+		[26540.835182]  sdc: sdc1 sdc2
+		[26543.086174] EXT4-fs (sdc2): warning: mounting unchecked fs, running e2fsck is recommended
+		[26544.384752] EXT4-fs (sdc2): mounted filesystem without journal. Opts: (null)	
+
+
+    b.  **From the information above:**
+	
+	Out SD card is in the format /dev/sdX where X is a letter [b,c,d..], in my case is **c**, but if you have
+	only one HDD most likely will be **b**	
+
+
+		ls /media/
+		boot  rootfs
+
+		l /media/*
+		/media/boot:
+		a64/  BPI-M64.txt  Image.version  initrd.img  OV5640_SET.txt  uEnv.txt
+
+		/media/rootfs:
+		bin/   dev/  home/  lost+found/  mnt/  proc/  run/   srv/  tmp/  var/
+		boot/  etc/  lib/   media/       opt/  root/  sbin/  sys/  usr/
+
+
+		**This is my SD card device, make sure you find yours**
+		/dev/sdc1        80M   24M   57M  30% /media/boot
+		/dev/sdc2        15G  2.2G   12G  17% /media/rootfs
+
+
+		In modern distro, you could have it as /media/[USER]/rootfs
+
+
+
+    c.  **Download the new kernel 3.10.104:**
+
+
+		mkdir -p m64
+            	cd m64
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/kernel_m64_rc3.tar.gz
+
+		*check MD5SUM, must match this:*
+		md5sum kernel_m64_rc3.tar.gz
+		65b77730cf820130c783557698458bd7  kernel_m64_rc3.tar.gz
+
+		*check MD5SUM, must match this:*
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/Image_kernel_3.10.104
+		md5sum Image_kernel_3.10.104 
+		6c6a6d426a40224956c8ec017457f067  Image_kernel_3.10.104
+
+
+    d.  **Flash it to SD card:**
+
+		
+		Please, change the correct path to your /media/?/boot where ? may be your [USER]
+
+		*note we need to backup Image in case something goes wrong*
+		mv /media/boot/a64/Image /media/boot/a64/Image_kernel_3.10.102
+		cp -vf Image_kernel_3.10.104 /media/boot/a64/Image
+		sync
+
+		sudo tar -xvpzf kernel_m64_rc3.tar.gz -C /media/rootfs/lib/modules --numeric-ow
+		sync
+
+
+
+    e.  **If everything is correct, unmount your SD card and boot the bpi-m64 with the SD card**
+
+
+
+2.  Update kernel on eMMC
+
+    a.  **type in command line:**
+
+
+		mkdir -p m64
+            	cd m64
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/kernel_m64_rc3.tar.gz
+
+		*check MD5SUM, must match this:*
+		md5sum kernel_m64_rc3.tar.gz
+		65b77730cf820130c783557698458bd7  kernel_m64_rc3.tar.gz
+
+		*check MD5SUM, must match this:*
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/Image_kernel_3.10.104
+		md5sum Image_kernel_3.10.104 
+		6c6a6d426a40224956c8ec017457f067  Image_kernel_3.10.104
+
+
+
+    b.  **Write it to eMMC:**
+
+
+		mv /media/ubuntu/emmcboot/a64/Image /media/ubuntu/emmcboot/a64/Image_kernel_3.10.102
+		cp -vf Image_kernel_3.10.104 /media/ubuntu/emmcboot/a64/Image
+		sync
+
+		sudo tar -xvpzf kernel_m64_rc3.tar.gz -C /media/ubuntu/emmcrootfs/lib/modules --numeric-ow
+		sync
+
+
+
+    c.  **Shutdown and boot without the SD card inserted:**
+
+
+		sudo shutdown -h now
+
 
 Initial setup
 -------------
