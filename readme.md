@@ -229,7 +229,7 @@ The update will be done manually as below:
 
     b.  **From the information above:**
 	
-	Out SD card is in the format /dev/sdX where X is a letter [b,c,d..], in my case is **c**, but if you have
+	Our SD card is in the format /dev/sdX where X is a letter [b,c,d..], in my case is **c**, but if you have
 	only one HDD most likely will be **b**	
 
 
@@ -326,6 +326,19 @@ The update will be done manually as below:
 
 
 		sudo shutdown -h now
+
+
+
+2.  Restoring kernel 3.10.102
+
+
+    If you find bugs or any instability on kernel 3.10.104 you can always restore kernel 3.10.102
+
+		mv /media/ubuntu/emmcboot/a64/Image /media/ubuntu/emmcboot/a64/Image_kernel_3.10.104
+		cp -vf /media/ubuntu/emmcboot/a64/Image_kernel_3.10.102 /media/ubuntu/emmcboot/a64/Image
+		sync
+
+    Reboot: sudo reboot
 
 
 Initial setup
