@@ -1,0 +1,803 @@
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 3.10.104 (ubuntu@apps) (gcc version 5.4.1 20160904 (Ubuntu/Linaro 5.4.1-2ubuntu1~16.04) ) #1 SMP PREEMPT Sat Feb 18 11:23:21 BRST 2017
+[    0.000000] CPU: AArch64 Processor [410fd034] revision 4
+[    0.000000] Machine: sun50iw1p1
+[    0.000000] cma: CMA: reserved 64 MiB at bc000000
+[    0.000000] On node 0 totalpages: 520192
+[    0.000000]   DMA zone: 7112 pages used for memmap
+[    0.000000]   DMA zone: 0 pages reserved
+[    0.000000]   DMA zone: 520192 pages, LIFO batch:31
+[    0.000000] script_init enter!
+[    0.000000] script buffer is NULL!
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv0.2 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] PERCPU: Embedded 12 pages/cpu @ffffffc07af91000 s19136 r8192 d21824 u49152
+[    0.000000] pcpu-alloc: s19136 r8192 d21824 u49152 alloc=12*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 513080
+[    0.000000] Kernel command line: console=tty0 console=ttyS0,115200n8 no_console_suspend disp.screen0_output_mode=1080p60 earlycon=uart,mmio32,0x01c28000 mac_addr=36:c9:e3:f1:b8:05 root=/dev/mmcblk1p2 ro rootwait
+[    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000] Memory: 2032MB = 2032MB total
+[    0.000000] Memory: 1969336k/1969336k available, 111432k reserved
+[    0.000000] Virtual kernel memory layout:
+                   vmalloc : 0xffffff8000000000 - 0xffffffbbffff0000   (245759 MB)
+                   vmemmap : 0xffffffbc00e38000 - 0xffffffbc02a00000   (    27 MB)
+                   modules : 0xffffffbffc000000 - 0xffffffc000000000   (    64 MB)
+                   memory  : 0xffffffc000000000 - 0xffffffc07f000000   (  2032 MB)
+                     .init : 0xffffffc0009e0000 - 0xffffffc000a62ac0   (   523 kB)
+                     .text : 0xffffffc000080000 - 0xffffffc0009dfae4   (  9599 kB)
+                     .data : 0xffffffc000a63000 - 0xffffffc000bbc000   (  1380 kB)
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] NR_IRQS:64 nr_irqs:64 0
+[    0.000000] Architected cp15 timer(s) running at 24.00MHz (phys).
+[    0.000000] Console: colour dummy device 80x25
+[    0.000000] console [tty0] enabled
+[    0.000000] allocated 8388608 bytes of page_cgroup
+[    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+[   17.649227] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=240000)
+[   17.649258] pid_max: default: 32768 minimum: 301
+[   17.649364] Security Framework initialized
+[   17.649419] AppArmor: AppArmor initialized
+[   17.649464] Mount-cache hash table entries: 256
+[   17.660337] Initializing cgroup subsys memory
+[   17.660394] Initializing cgroup subsys devices
+[   17.660412] Initializing cgroup subsys freezer
+[   17.660428] Initializing cgroup subsys blkio
+[   17.660443] Initializing cgroup subsys perf_event
+[   17.660463] Initializing cgroup subsys hugetlb
+[   17.660530] ftrace: allocating 27387 entries in 107 pages
+[   17.692466] CPU0: update cpu_power 1968128
+[   17.692500] hw perfevents: enabled with arm/armv8-pmuv3 PMU driver, 7 counters available
+[   17.693436] virtual base = 0xffffff800000a000. 
+[   17.693456] gicd_base = 0xffffff800000c000. 
+[   17.693469] gicc_base = 0xffffff800000e000. 
+[   17.694045] CPU1: Booted secondary processor
+[   17.694068] CPU1: update cpu_power 1968128
+[   17.696670] CPU2: Booted secondary processor
+[   17.696681] CPU2: update cpu_power 1968128
+[   17.700788] CPU3: Booted secondary processor
+[   17.700799] CPU3: update cpu_power 1968128
+[   17.700879] Brought up 4 CPUs
+[   17.700956] SMP: Total of 4 processors activated (192.00 BogoMIPS).
+[   17.701559] devtmpfs: initialized
+[   17.706320] atomic64 test passed
+[   17.706339] pinctrl core: initialized pinctrl subsystem
+[   17.708840] NET: Registered protocol family 16
+[   17.709113] script_sysfs_init success
+[   17.709328] dump_class_init,806, success
+[   17.709611] vdso: 2 pages (1 code, 1 data) at base ffffffc000a69000
+[   17.709643] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[   17.710906] software IO TLB [mem 0xb8800000-0xb8c00000] (4MB) mapped at [ffffffc077800000-ffffffc077bfffff]
+[   17.711941] DMA: preallocated 256 KiB pool for atomic allocations
+[   17.712075] Serial: AMBA PL011 UART driver
+[   17.712185] axp81x_board_init: axp regl_devs num = 23
+[   17.712323] pll_audio-set_default_rate=24576000 success!
+[   17.712353] pll_video0-set_default_rate=297000000 success!
+[   17.712437] pll_video1-set_default_rate=297000000 success!
+[   17.712506] pll_de-set_default_rate=297000000 success!
+[   17.713233] de-set_default_source=pll_de success!
+[   17.713248] de-set_default_rate=297000000 success!
+[   17.713301] tcon0-set_default_source=pll_mipi success!
+[   17.713343] tcon1-set_default_source=pll_video0 success!
+[   17.713558] hdmi-set_default_source=pll_video0 success!
+[   17.715819] sun50i-r-pinctrl 1f02c00.pinctrl: initialized sunXi PIO driver
+[   17.715998] [sun50iw1p1_pinctrl_probe][838]
+[   17.717662] sun50i-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+[   17.718311] sunxi hwspinlock vbase:0xffffff800005c000
+[   17.723803] sunxi_chipid_probe,150: soc bin:0
+[   17.723820] chipid-sunxi serial 000000000000
+[   17.728674] bio: create slab <bio-0> at 0
+[   17.729031] pwm module init!
+[   17.730228] SCSI subsystem initialized
+[   17.730375] usbcore: registered new interface driver usbfs
+[   17.730423] usbcore: registered new interface driver hub
+[   17.730496] usbcore: registered new device driver usb
+[   17.730988] Linux video capture interface: v2.00
+[   17.731486] [ARISC] :sunxi-arisc driver v1.10
+[   17.738231] [ARISC] :sunxi-arisc driver v1.10 startup succeeded
+[   17.738468] Advanced Linux Sound Architecture Driver Initialized.
+[   17.738841] NetLabel: Initializing
+[   17.738854] NetLabel:  domain hash size = 128
+[   17.738867] NetLabel:  protocols = UNLABELED CIPSOv4
+[   17.738914] NetLabel:  unlabeled traffic allowed by default
+[   17.739075] [pm]aw_pm_init!
+[   17.739138] rtc physical base = 0x0000000001f00000 . 
+[   17.739179] np name = /soc@01c00000/rtc@01f00000. 
+[   17.739194] base = ffffff800006e100, len = 4.
+[   17.739207] pmu name: pmu0 .
+[   17.739245] pmu0_enable = 0x1. 
+[   17.739258] pmux_id = 0x6. 
+[   17.739269] pmux_twi_id = 0x1. 
+[   17.739281] pmux_twi_addr = 0x34. 
+[   17.739292] pmu name: pmu1 .
+[   17.739343] Warning: can not find np for pmu1. 
+[   17.739568] add_sys_pwr_dm: get ldo name  for id: vcc-lpddr failed
+[   17.739734] after inited: sys_mask config = 0x4a55. 
+[   17.739766] Warning: can not find np for dynamic_standby_para. 
+[   17.739885] [pm]valid
+[   17.739895] [pm]valid
+[   17.739904] Notice: sun9i&sun8iw5&sun50i not need support normal standby, 				change to super standby.
+[   17.740134] Switching to clocksource arch_sys_counter
+[   17.750675] AppArmor: AppArmor Filesystem Enabled
+[   17.757461] NET: Registered protocol family 2
+[   17.758158] TCP established hash table entries: 16384 (order: 6, 262144 bytes)
+[   17.758416] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[   17.758698] TCP: Hash tables configured (established 16384 bind 16384)
+[   17.758782] TCP: reno registered
+[   17.758800] UDP hash table entries: 1024 (order: 3, 32768 bytes)
+[   17.758860] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes)
+[   17.759098] NET: Registered protocol family 1
+[   17.759394] RPC: Registered named UNIX socket transport module.
+[   17.759412] RPC: Registered udp transport module.
+[   17.759425] RPC: Registered tcp transport module.
+[   17.759438] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[   17.759605] Trying to unpack rootfs image as initramfs...
+[   17.804831] Freeing initrd memory: 1076K (ffffffc075da7000 - ffffffc075eb4000)
+[   17.805380] kvm [1]: Using HYP init bounce page @b87d3000
+[   17.805861] kvm [1]: interrupt-controller@1c84000 IRQ25
+[   17.806275] kvm [1]: timer IRQ27
+[   17.806299] kvm [1]: Hyp mode initialized successfully
+[   17.808073] lock super standby defaultly!
+[   17.808097] lookup_scene_lock_name: new scene lock super_standby
+[   17.808113] scene_lock_init name=super_standby
+[   17.808128] scene_lock: super_standby, type 5, count 1
+[   17.808522] audit: initializing netlink socket (disabled)
+[   17.808582] type=2000 audit(0.140:1): initialized
+[   17.809284] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[   17.809759] VFS: Disk quotas dquot_6.5.2
+[   17.809878] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[   17.810295] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[   17.810826] NFS: Registering the id_resolver key type
+[   17.810875] Key type id_resolver registered
+[   17.810888] Key type id_legacy registered
+[   17.810907] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[   17.811066] NTFS driver 2.1.30 [Flags: R/W].
+[   17.811231] fuse init (API version 7.22)
+[   17.811430] msgmni has been set to 3976
+[   17.812381] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[   17.812483] io scheduler noop registered
+[   17.812497] io scheduler deadline registered
+[   17.812531] io scheduler cfq registered (default)
+[   17.813050] [DISP]disp_module_init
+[   17.813453] [DISP] disp_boot_para_parse,line:301:of_property_read disp.boot_disp fail
+[   17.813477] [DISP] boot_disp:0x0
+[   17.814074] [DISP] disp_sys_script_get_item,line:193:of_find_compatible_node allwinner,sunxi-lcd1 fail
+[   17.814235] [DISP] disp_sys_script_get_item,line:193:of_find_compatible_node allwinner,sunxi-lcd1 fail
+[   17.814394] [DISP] disp_sys_script_get_item,line:193:of_find_compatible_node allwinner,sunxi-lcd1 fail
+[   17.815476] [DISP] disp_boot_para_parse,line:301:of_property_read disp.fb_base fail
+[   17.815498] [DISP] fb_base:0x0
+[   17.852650] Console: switching to colour frame buffer device 240x67
+[   17.881125] [DISP]disp_module_init finish
+[   17.881592] uart0: ttyS0 at MMIO 0x1c28000 (irq = 32) is a SUNXI
+[   17.881746] sw_console_setup()1173 - console setup baud 115200 parity n bits 8, flow n
+[   18.866922] console [ttyS0] enabled
+[   18.871256] uart1: ttyS1 at MMIO 0x1c28400 (irq = 33) is a SUNXI
+[   18.878316] misc dump reg init
+[   18.881885] [drm] Initialized drm 1.1.0 20060810
+[   18.891402] brd: module loaded
+[   18.897132] loop: module loaded
+[   18.900873] sunxi-bt bt.28: bt_power_name (vcc-wifi)
+[   18.906423] sunxi-bt bt.28: io_regulator_name (vcc-wifi-io)
+[   18.912667] sunxi-bt bt.28: bt_rst gpio=356  mul-sel=1  pull=-1  drv_level=-1  data=0
+[   18.921494] sunxi-bt bt.28: block state already is 1
+[   18.927198] sunxi-wlan wlan.27: wlan_busnum (1)
+[   18.932268] sunxi-wlan wlan.27: wlan_power_name (vcc-wifi)
+[   18.938379] sunxi-wlan wlan.27: io_regulator_name (vcc-wifi-io)
+[   18.944991] sunxi-wlan wlan.27: wlan_regon gpio=354  mul-sel=1  pull=-1  drv_level=-1  data=0
+[   18.954512] sunxi-wlan wlan.27: wlan_hostwake gpio=355  mul-sel=6  pull=-1  drv_level=-1  data=0
+[   18.964902] tun: Universal TUN/TAP device driver, 1.6
+[   18.970539] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[   18.978006] WARNING: Get ephy clock is failed
+[   18.983192] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[   18.990591] get ehci0-controller, regulator_io is no nocare
+[   18.996994] [sunxi-ehci0]: probe, pdev->name: 1c1a000.ehci0-controller, sunxi_ehci: 0xffffffc000c66b00, 0x:ffffff80000a2000, irq_no:68
+[   19.010536] sunxi-ehci 1c1a000.ehci0-controller: SW USB2.0 'Enhanced' Host Controller (EHCI) Driver
+[   19.020645] sunxi-ehci 1c1a000.ehci0-controller: new USB bus registered, assigned bus number 1
+[   19.030544] sunxi-ehci 1c1a000.ehci0-controller: irq 104, io mem 0xffffffc0004f1924
+[   19.058758] sunxi-ehci 1c1a000.ehci0-controller: USB 0.0 started, EHCI 1.00
+[   19.066910] hub 1-0:1.0: USB hub found
+[   19.071107] hub 1-0:1.0: 1 port detected
+[   19.075600] [ehci0-controller]: sunxi_usb_disable_ehci
+[   19.081339] [sunxi-ehci0]: remove, pdev->name: 1c1a000.ehci0-controller, sunxi_ehci: 0xffffffc000c66b00
+[   19.091825] sunxi-ehci 1c1a000.ehci0-controller: remove, state 1
+[   19.098533] usb usb1: USB disconnect, device number 1
+[   19.105049] sunxi-ehci 1c1a000.ehci0-controller: USB bus 1 deregistered
+[   19.112625] get ehci1-controller drv_vbus_gpio is fail
+[   19.118361] get ehci1-controller, regulator_io is no nocare
+[   19.131373] [sunxi-ehci1]: probe, pdev->name: 1c1b000.ehci1-controller, sunxi_ehci: 0xffffffc000c66d50, 0x:ffffff80000aa000, irq_no:6a
+[   19.151778] sunxi-ehci 1c1b000.ehci1-controller: SW USB2.0 'Enhanced' Host Controller (EHCI) Driver
+[   19.168885] sunxi-ehci 1c1b000.ehci1-controller: new USB bus registered, assigned bus number 1
+[   19.185728] sunxi-ehci 1c1b000.ehci1-controller: irq 106, io mem 0xffffffc0004f1924
+[   19.216195] sunxi-ehci 1c1b000.ehci1-controller: USB 0.0 started, EHCI 1.00
+[   19.231000] ehci_irq: highspeed device connect
+[   19.243065] hub 1-0:1.0: USB hub found
+[   19.254240] hub 1-0:1.0: 1 port detected
+[   19.265867] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[   19.279917] get ohci0-controller, regulator_io is no nocare
+[   19.293228] hci: request ohci0-controller gpio:1027
+[   19.305741] [sunxi-ohci0]: probe, pdev->name: 1c1a000.ohci0-controller, sunxi_ohci: 0xffffffc000c66660
+[   19.323290] sunxi-ohci 1c1a000.ohci0-controller: SW USB2.0 'Open' Host Controller (OHCI) Driver
+[   19.340164] sunxi-ohci 1c1a000.ohci0-controller: new USB bus registered, assigned bus number 2
+[   19.357000] sunxi-ohci 1c1a000.ohci0-controller: irq 105, io mem 0x000000f0
+[   19.427096] hub 2-0:1.0: USB hub found
+[   19.438441] hub 2-0:1.0: 1 port detected
+[   19.449992] [ohci0-controller]: sunxi_usb_disable_ohci
+[   19.462768] [sunxi-ohci0]: remove, pdev->name: 1c1a000.ohci0-controller, sunxi_ohci: 0xffffffc000c66660
+[   19.480263] sunxi-ohci 1c1a000.ohci0-controller: remove, state 1
+[   19.494017] usb usb2: USB disconnect, device number 1
+[   19.506960] sunxi-ohci 1c1a000.ohci0-controller: USB bus 2 deregistered
+[   19.521574] get ohci1-controller drv_vbus_gpio is fail
+[   19.534351] get ohci1-controller, regulator_io is no nocare
+[   19.547588] [sunxi-ohci1]: probe, pdev->name: 1c1b000.ohci1-controller, sunxi_ohci: 0xffffffc000c668b0
+[   19.565043] sunxi-ohci 1c1b000.ohci1-controller: SW USB2.0 'Open' Host Controller (OHCI) Driver
+[   19.581881] usb 1-1: new high-speed USB device number 2 using sunxi-ehci
+[   19.596514] sunxi-ohci 1c1b000.ohci1-controller: new USB bus registered, assigned bus number 2
+[   19.613322] sunxi-ohci 1c1b000.ohci1-controller: irq 107, io mem 0x2c6a626e6b61ff72
+[   19.682924] hub 2-0:1.0: USB hub found
+[   19.694306] hub 2-0:1.0: 1 port detected
+[   19.706197] usbcore: registered new interface driver usb-storage
+[   19.720109] usbcore: registered new interface driver ums-alauda
+[   19.733897] usbcore: registered new interface driver ums-cypress
+[   19.747719] usbcore: registered new interface driver ums-datafab
+[   19.761500] usbcore: registered new interface driver ums_eneub6250
+[   19.775439] usbcore: registered new interface driver ums-freecom
+[   19.775680] hub 1-1:1.0: USB hub found
+[   19.775853] hub 1-1:1.0: 4 ports detected
+[   19.811617] usbcore: registered new interface driver ums-isd200
+[   19.825208] usbcore: registered new interface driver ums-jumpshot
+[   19.838902] usbcore: registered new interface driver ums-karma
+[   19.852219] usbcore: registered new interface driver ums-onetouch
+[   19.865713] usbcore: registered new interface driver ums-realtek
+[   19.879027] usbcore: registered new interface driver ums-sddr09
+[   19.892163] usbcore: registered new interface driver ums-sddr55
+[   19.905203] usbcore: registered new interface driver ums-usbat
+[   19.918112] usbcore: registered new interface driver usbserial
+[   19.930772] usbcore: registered new interface driver usbserial_generic
+[   19.943998] usbserial: USB Serial support registered for generic
+[   19.956835] mousedev: PS/2 mouse device common for all mice
+[   19.969459] input: sunxi-keyboard as /devices/virtual/input/input0
+[   19.982836] sunxi-rtc 1f00000.rtc: rtc core: registered rtc-sunxi as rtc0
+[   19.996414] sunxi-rtc 1f00000.rtc: RTC enabled
+[   20.007630] i2c /dev entries driver
+[   20.052913] usb 1-1.3: new high-speed USB device number 3 using sunxi-ehci
+[   20.066790] input: axp81x-supplyer as /devices/platform/axp81x_board/axp81x-supplyer.47/input/input1
+[   20.086408] sunxi budget cooling probe start !
+[   20.097465] CPU freq cooling register Success
+[   20.108326] CPU hotplug cooling register Success
+[   20.119481] CPU budget cooling register Success
+[   20.130715] sunxi gpu cooling probe start !
+[   20.141198] CPU gpu cooling register Success
+[   20.154394] cpuidle: using governor ladder
+[   20.163889] cpuidle: using governor menu
+[   20.173826] sunxi-mmc 1c11000.sdmmc: SD/MMC/SDIO Host Controller Driver(v0.37 2015-11-9 15:13) Compiled in Feb 18 2017 at 10:59:55
+[   20.191931] sunxi-mmc 1c11000.sdmmc: regulator prop vmmc,str vcc-emmcv
+[   20.192404] hub 1-1.3:1.0: USB hub found
+[   20.192699] hub 1-1.3:1.0: 4 ports detected
+[   20.223473] sunxi-mmc 1c11000.sdmmc: regulator prop vqmmc,str vcc-emmcvq18
+[   20.236197] sunxi-mmc 1c11000.sdmmc: regulator prop vdmmc,str none
+[   20.248189] sunxi-mmc 1c11000.sdmmc: No vdmmc regulator found
+[   20.260047] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 0Hz bm PP pm UP vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   20.288753] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   20.318308] sunxi-mmc 1c11000.sdmmc: base:0xffffff80000be000 irq:94
+[   20.319094] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 52, RTO !!
+[   20.319909] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 52, RTO !!
+[   20.319926] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   20.322305] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   20.324126] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 8, RTO !!
+[   20.324937] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 5, RTO !!
+[   20.325747] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 5, RTO !!
+[   20.326556] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 5, RTO !!
+[   20.327365] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 5, RTO !!
+[   20.328180] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 55, RTO !!
+[   20.328992] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 55, RTO !!
+[   20.329803] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 55, RTO !!
+[   20.330615] sunxi-mmc 1c11000.sdmmc: smc 0 p2 err, cmd 55, RTO !!
+[   20.330634] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm OD pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   20.330980] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm OD pm ON vdd 7 width 1 timing LEGACY(SDR12) dt B
+[   20.331023] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm OD pm ON vdd 7 width 1 timing LEGACY(SDR12) dt B
+[   20.331060] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm OD pm ON vdd 7 width 1 timing LEGACY(SDR12) dt B
+[   20.333431] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm OD pm ON vdd 7 width 1 timing LEGACY(SDR12) dt B
+[   20.388314] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 7 width 1 timing LEGACY(SDR12) dt B
+[   20.399663] mmc0: BKOPS_EN bit is not set
+[   20.400600] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 7 width 1 timing MMC-HS(SDR20) dt B
+[   20.400638] mmc0: Check switch ready sunxi_mmc_check_timing_switch_done
+[   20.400949] mmc0: mmc_card_highspeed(card):4
+[   20.400951] mmc0: mmc_card_hs200(card):0
+[   20.400952] mmc0: mmc_card_hs400(card):0
+[   20.401575] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 7 width 1 timing MMC-HS(SDR20) dt B
+[   20.401644] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 7 width 1 timing UHS-DDR50 dt B
+[   20.401662] sunxi-mmc 1c11000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 7 width 8 timing UHS-DDR50 dt B
+[   20.686460] mmc0: new high speed DDR MMC card at address 0001
+[   20.686893] sunxi-mmc 1c0f000.sdmmc: SD/MMC/SDIO Host Controller Driver(v0.37 2015-11-9 15:13) Compiled in Feb 18 2017 at 10:59:55
+[   20.686915] sunxi-mmc 1c0f000.sdmmc: regulator prop vmmc,str vcc-sdcv
+[   20.686921] sunxi-mmc 1c0f000.sdmmc: regulator prop vqmmc,str vcc-sdcvq33
+[   20.686926] sunxi-mmc 1c0f000.sdmmc: regulator prop vdmmc,str vcc-sdcvd
+[   20.750774] sunxi-mmc 1c0f000.sdmmc: Got CD GPIO #166.
+[   20.761166] mmcblk0: mmc0:0001 8WPD3R 7.28 GiB 
+[   20.761274] sunxi-mmc 1c0f000.sdmmc: base:0xffffff80000c6000 irq:92
+[   20.761645] sunxi-mmc 1c10000.sdmmc: SD/MMC/SDIO Host Controller Driver(v0.37 2015-11-9 15:13) Compiled in Feb 18 2017 at 10:59:55
+[   20.761664] sunxi-mmc 1c10000.sdmmc: Can't get vmmc regulator string
+[   20.761669] sunxi-mmc 1c10000.sdmmc: Can't get vqmmc regulator string
+[   20.761673] sunxi-mmc 1c10000.sdmmc: Can't get vdmmc regulator string
+[   20.761674] get() with no identifier
+[   20.761676] get() with no identifier
+[   20.761677] get() with no identifier
+[   20.761680] sunxi-mmc 1c10000.sdmmc: No vmmc regulator found
+[   20.761683] sunxi-mmc 1c10000.sdmmc: No vqmmc regulator found
+[   20.761687] sunxi-mmc 1c10000.sdmmc: No vdmmc regulator found
+[   20.893608] mmcblk0boot0: mmc0:0001 8WPD3R partition 1 4.00 MiB
+[   20.893683] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   20.893701] sunxi-mmc 1c10000.sdmmc: no vqmmc,Check if there is regulator
+[   20.908680] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   20.928377] sunxi-mmc 1c10000.sdmmc: base:0xffffff80000ce000 irq:93
+[   20.928972] usbcore: registered new interface driver usbhid
+[   20.928973] usbhid: USB HID core driver
+[   20.979130] usb 1-1.3.1: new low-speed USB device number 4 using sunxi-ehci
+[   20.979411] mmcblk0boot1: mmc0:0001 8WPD3R partition 2 4.00 MiB
+[   20.979762] usbcore: registered new interface driver snd-usb-audio
+[   20.980127]  mmcblk0: p1 p2
+[   20.982432]  mmcblk0boot1: unknown partition table
+[   20.983252]  mmcblk0boot0: unknown partition table
+[   20.983383] *mmc0 lock timeout*
+[   21.049454] sndhdmi sound.7:  sndhdmi <-> 1c22800.daudio mapping ok
+[   21.061671] TCP: cubic registered
+[   21.069869] NET: Registered protocol family 10
+[   21.075949] *mmc1 detect cd change*
+[   21.075953] *mmc1 lock*
+[   21.075967] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 0Hz bm PP pm UP vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   21.095636] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   21.116116] sunxi-mmc 1c0f000.sdmmc: smc 1 p0 err, cmd 52, RTO !!
+[   21.116927] sunxi-mmc 1c0f000.sdmmc: smc 1 p0 err, cmd 52, RTO !!
+[   21.116940] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   21.119312] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 22 width 1 timing LEGACY(SDR12) dt B
+[   21.121436] sunxi-mmc 1c0f000.sdmmc: smc 1 p0 err, cmd 5, RTO !!
+[   21.122245] sunxi-mmc 1c0f000.sdmmc: smc 1 p0 err, cmd 5, RTO !!
+[   21.123054] sunxi-mmc 1c0f000.sdmmc: smc 1 p0 err, cmd 5, RTO !!
+[   21.123864] sunxi-mmc 1c0f000.sdmmc: smc 1 p0 err, cmd 5, RTO !!
+[   21.124487] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 15 width 1 timing LEGACY(SDR12) dt B
+[   21.124526] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 15 width 1 timing LEGACY(SDR12) dt B
+[   21.126895] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 15 width 1 timing LEGACY(SDR12) dt B
+[   21.151798] mmc1: host does not support reading read-only switch. assuming write-enable.
+[   21.153608] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 15 width 1 timing SD-HS(SDR25) dt B
+[   21.153648] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 15 width 1 timing SD-HS(SDR25) dt B
+[   21.153714] sunxi-mmc 1c0f000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 15 width 4 timing SD-HS(SDR25) dt B
+[   21.153734] mmc1: new high speed SDHC card at address 0007
+[   21.352651] mmcblk1: mmc1:0007 SL16G 14.4 GiB 
+[   21.362940] sit: IPv6 over IPv4 tunneling driver
+[   21.373418] input: USB Optical Mouse as /devices/soc.0/1c1b000.ehci1-controller/usb1/1-1/1-1.3/1-1.3.1/1-1.3.1:1.0/input/input2
+[   21.373536] NET: Registered protocol family 17
+[   21.373600] 8021q: 802.1Q VLAN Support v1.8
+[   21.373795] Key type dns_resolver registered
+[   21.373978] Registering SWP/SWPB emulation handler
+[   21.431827]  mmcblk1: p1 p2
+[   21.431984] registered taskstats version 1
+[   21.449743] hid-generic 0003:1BCF:0007.0001: input: USB HID v1.10 Mouse [USB Optical Mouse] on usb-sunxi-ehci-1.3.1/input0
+[   21.450053] *mmc1 lock timeout*
+[   21.450071] Key type encrypted registered
+[   21.450080] AppArmor: AppArmor sha1 policy hashing enabled
+[   21.450870] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 52, RTO !!
+[   21.451677] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 52, RTO !!
+[   21.451695] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   21.454095] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   21.455909] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 8, RTO !!
+[   21.456713] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 5, RTO !!
+[   21.457518] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 5, RTO !!
+[   21.458319] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 5, RTO !!
+[   21.459124] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 5, RTO !!
+[   21.459931] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 55, RTO !!
+[   21.460736] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 55, RTO !!
+[   21.461540] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 55, RTO !!
+[   21.462344] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 55, RTO !!
+[   21.462359] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm OD pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   21.463189] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 1, RTO !!
+[   21.463204] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 0Hz bm OD pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+[   21.464250] *mmc2 unlock*
+[   21.711052] [DISP] disp_boot_para_parse,line:301:of_property_read disp.boot_disp fail
+[   21.724654] [DISP] boot_disp:0x0
+[   21.733812] [HDMI] power vcc-hdmi-33
+[   21.743068] [HDMI] cec support = 0
+[   21.784694] usb 1-1.3.4: new low-speed USB device number 5 using sunxi-ehci
+[   21.854309] sunxi-rtc 1f00000.rtc: setting system clock to 2010-01-01 00:00:18 UTC (1262304018)
+[   21.869433] input: sunxi-ths as /devices/virtual/input/input3
+[   21.880949] thermal thermal_zone0: failed to read out thermal zone 0
+[   21.893424] ALSA device list:
+[   21.901721]   #0: sndhdmi
+[   21.909976] Freeing unused kernel memory: 520K (ffffffc0009e0000 - ffffffc000a62000)
+[   21.911598] input: SIGMACHIP USB Keyboard as /devices/soc.0/1c1b000.ehci1-controller/usb1/1-1/1-1.3/1-1.3.4/1-1.3.4:1.0/input/input4
+[   21.911749] hid-generic 0003:1C4F:0002.0002: input: USB HID v1.10 Keyboard [SIGMACHIP USB Keyboard] on usb-sunxi-ehci-1.3.4/input0
+[   21.914678] input: SIGMACHIP USB Keyboard as /devices/soc.0/1c1b000.ehci1-controller/usb1/1-1/1-1.3/1-1.3.4/1-1.3.4:1.1/input/input5
+[   21.914797] hid-generic 0003:1C4F:0002.0003: input: USB HID v1.10 Device [SIGMACHIP USB Keyboard] on usb-sunxi-ehci-1.3.4/input1
+[   22.073293] EXT4-fs (mmcblk1p2): couldn't mount as ext3 due to feature incompatibilities
+[   22.088812] EXT4-fs (mmcblk1p2): couldn't mount as ext2 due to feature incompatibilities
+[   22.108045] EXT4-fs (mmcblk1p2): warning: mounting unchecked fs, running e2fsck is recommended
+[   22.453560] [DISP] disp_device_attached_and_enable,line:159:attched ok, mgr0<-->device1, type=4, mode=10
+[   23.260456] hdmi_clk_enable_prepare()L161
+[   23.504495] EXT4-fs (mmcblk1p2): mounted filesystem without journal. Opts: (null)
+[   23.838291] systemd[1]: System time before build time, advancing clock.
+[   23.940248] systemd[1]: systemd 229 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ -LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD -IDN)
+[   23.966852] systemd[1]: Detected architecture arm64.
+[   23.999514] systemd[1]: Set hostname to <bpi-m64>.
+[   24.317305] systemd[1]: Reached target Remote File Systems (Pre).
+[   24.352956] systemd[1]: Listening on udev Control Socket.
+[   24.382376] systemd[1]: Listening on Journal Socket (/dev/log).
+[   24.411790] systemd[1]: Reached target Encrypted Volumes.
+[   24.441629] systemd[1]: Created slice User and Session Slice.
+[   24.470837] systemd[1]: Reached target Swap.
+[   24.500509] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[   24.529976] systemd[1]: Listening on /dev/initctl Compatibility Named Pipe.
+[   24.559632] systemd[1]: Listening on Journal Socket.
+[   24.589048] systemd[1]: Listening on udev Kernel Socket.
+[   24.618447] systemd[1]: Reached target User and Group Name Lookups.
+[   24.648409] systemd[1]: Created slice System Slice.
+[   24.688419] systemd[1]: Starting Set console keymap...
+[   24.718554] systemd[1]: Starting Remount Root and Kernel File Systems...
+[   24.750385] systemd[1]: Starting Load Kernel Modules...
+[   24.787445] systemd[1]: Mounting POSIX Message Queue File System...
+[   24.815402] systemd[1]: Reached target Slices.
+[   24.846711] systemd[1]: Starting Create list of required static device nodes for the current kernel...
+[   24.885814] systemd[1]: Mounting Huge Pages File System...
+[   24.915377] systemd[1]: Mounting Debug File System...
+[   24.943628] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[   24.974396] systemd[1]: Starting Journal Service...
+[   25.002264] systemd[1]: Reached target Remote File Systems.
+[   25.035843] systemd[1]: Mounted POSIX Message Queue File System.
+[   25.071280] systemd[1]: Mounted Huge Pages File System.
+[   25.100840] systemd[1]: Mounted Debug File System.
+[   25.130596] systemd[1]: keyboard-setup.service: Main process exited, code=exited, status=203/EXEC
+[   25.147543] systemd[1]: Failed to start Set console keymap.
+[   25.199083] systemd[1]: keyboard-setup.service: Unit entered failed state.
+[   25.213794] systemd[1]: keyboard-setup.service: Failed with result 'exit-code'.
+[   25.229129] systemd[1]: Started Remount Root and Kernel File Systems.
+[   25.259180] systemd[1]: Started Create list of required static device nodes for the current kernel.
+[   25.340817] systemd[1]: Starting Create Static Device Nodes in /dev...
+[   25.378524] systemd[1]: Starting Load/Save Random Seed...
+[   25.386643] cfg80211: Calling CRDA to update world regulatory domain
+[   25.445210] systemd[1]: Starting udev Coldplug all Devices...
+[   25.476092] systemd[1]: Started Journal Service.
+[   25.500537] dhd_module_init: in
+[   25.510535] ======== bcm_wlan_set_plat_data ========
+[   25.522484] host_oob_irq: 4 
+[   25.532187] host_oob_irq_flags=16516
+[   25.542604] dhd_wifi_platform_load: Enter
+[   25.553448] Power-up adapter 'DHD generic adapter'
+[   25.565113] wifi_platform_set_power = 1
+[   25.576263] ======== PULL WL_REG_ON HIGH! ========
+[   25.588129] sunxi-wlan wlan.27: check wlan wlan_power voltage: 3300000
+[   25.601976] sunxi-wlan wlan.27: check wlan io_regulator voltage: 3300000
+[   25.633664] systemd-journald[164]: Received request to flush runtime journal from PID 1
+[   25.927135] wifi_platform_bus_enumerate device present 1
+[   25.940456] sunxi-wlan wlan.27: bus_index: 1
+[   25.954874] ======== Card detection to detect SDIO card! ========
+[   25.966352] cfg80211: World regulatory domain updated:
+[   25.966357] cfg80211:   (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)
+[   25.966361] cfg80211:   (2402000 KHz - 2472000 KHz @ 40000 KHz), (N/A, 2000 mBm)
+[   25.966364] cfg80211:   (2457000 KHz - 2482000 KHz @ 40000 KHz), (N/A, 2000 mBm)
+[   25.966366] cfg80211:   (2474000 KHz - 2494000 KHz @ 20000 KHz), (N/A, 2000 mBm)
+[   25.966369] cfg80211:   (5170000 KHz - 5250000 KHz @ 80000 KHz), (N/A, 2000 mBm)
+[   25.966371] cfg80211:   (5250000 KHz - 5330000 KHz @ 80000 KHz), (N/A, 2000 mBm)
+[   25.966374] cfg80211:   (5490000 KHz - 5730000 KHz @ 160000 KHz), (N/A, 2000 mBm)
+[   25.966376] cfg80211:   (5735000 KHz - 5835000 KHz @ 80000 KHz), (N/A, 2000 mBm)
+[   25.966379] cfg80211:   (57240000 KHz - 63720000 KHz @ 2160000 KHz), (N/A, 0 mBm)
+[   25.999248] sunxi cedar version 0.1 
+[   25.999369] [cedar]: install start!!!
+[   25.999450] ycy the get irq is 90
+[   26.133929] ycy clk_bass_vir 0x18  is ffffff80013f8018, the value:3006207
+[   26.135118] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   26.135215] sunxi-mmc 1c10000.sdmmc: no vqmmc,Check if there is regulator
+[   26.175184] ycy clk_bass_vir 0x13c  is ffffff80013f813c, the value:0
+[   26.182970] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   26.204086] ycy clk_bass_vir 0x64  is ffffff80013f8064, the value:601810
+[   26.219516] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 52, RTO !!
+[   26.232874] ycy clk_bass_vir 0x2c4  is ffffff80013f82c4, the value:601c10
+[   26.233527] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 52, RTO !!
+[   26.233888] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   26.236309] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[   26.238129] sunxi-mmc 1c10000.sdmmc: smc 2 p1 err, cmd 8, RTO !!
+[   26.238460] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 16 width 1 timing LEGACY(SDR12) dt B
+[   26.247606] mmc2: queuing unknown CIS tuple 0x80 (2 bytes)
+[   26.249087] mmc2: queuing unknown CIS tuple 0x80 (3 bytes)
+[   26.250577] mmc2: queuing unknown CIS tuple 0x80 (3 bytes)
+[   26.253237] mmc2: queuing unknown CIS tuple 0x80 (7 bytes)
+[   26.339826] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 400000Hz bm PP pm ON vdd 16 width 1 timing SD-HS(SDR25) dt B
+[   26.339907] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 16 width 1 timing SD-HS(SDR25) dt B
+[   26.339973] sunxi-mmc 1c10000.sdmmc: sdc set ios: clk 50000000Hz bm PP pm ON vdd 16 width 4 timing SD-HS(SDR25) dt B
+[   26.341234] mmc2: new high speed SDIO card at address 0001
+[   26.346606] *mmc2 lock timeout*
+[   26.362483] bcmsdh_register: register client driver
+[   26.362607] bcmsdh_sdmmc: bcmsdh_sdmmc_probe Enter
+[   26.362657] bcmsdh_sdmmc: bcmsdh_sdmmc_probe Enter
+[   26.362660] bus num (host idx)=2, slot num (rca)=1
+[   26.362664] found adapter info 'DHD generic adapter'
+[   26.362901] dhdsdio_probe : no mutex held. set lock
+[   26.362972] F1 signature read @0x18000000=0x1540a9a6
+[   26.364682] F1 signature OK, socitype:0x1 chip:0xa9a6 rev:0x0 pkg:0x4
+[   26.365360] DHD: dongle ram size is set to 524288(orig 524288) at 0x0
+[   26.365459] dhd_conf_set_chiprev: chip=0xa9a6, chiprev=0
+[   26.365509] dhd_conf_set_conf_path_by_nv_path: config_path=/lib/firmware/ap6212/config.txt
+[   26.420445] wl_create_event_handler(): thread:wl_event_handler:ce started
+[   26.420530] tsk Enter, tsk = 0xffffffc0769019c0
+[   26.420600] dhd_attach(): thread:dhd_watchdog_thread:cf started
+[   26.420630] dhd_attach(): thread:dhd_dpc:d0 started
+[   26.420644] dhd_dpc_thread: set dpc_cpucore 0 from config.txt
+[   26.420680] dhd_attach(): thread:dhd_rxf:d1 started
+[   26.420692] dhd_deferred_work_init: work queue initialized 
+[   26.420827] dhdsdio_probe_init: set use_rxchain 1 from config.txt
+[   26.426583] Dongle Host Driver, version 1.201.59.3 (r506368)
+               Compiled in drivers/net/wireless/bcmdhd on Feb 18 2017 at 11:05:28
+[   26.427039] Register interface [wlan0]  MAC: 94:a1:a2:c2:55:46
+
+[   26.427046] dhd_prot_ioctl : bus is down. we have nothing to do
+[   26.427085] bcmsdh_oob_intr_unregister: Enter
+[   26.427086] bcmsdh_oob_intr_unregister: irq is not registered
+[   26.427094] dhd_txglom_enable: enable 0
+[   26.427096] dhd_bus_devreset:  WLAN OFF DONE
+[   26.427125] wifi_platform_set_power = 0
+[   26.427127] ======== PULL WL_REG_ON LOW! ========
+[   26.427457] dhdsdio_probe : the lock is released.
+[   26.427526] dhd_module_init: Exit err=0
+[   26.758240] Bluetooth: Core ver 2.16
+[   26.758283] NET: Registered protocol family 31
+[   26.758285] Bluetooth: HCI device and connection manager initialized
+[   26.758313] Bluetooth: HCI socket layer initialized
+[   26.758319] Bluetooth: L2CAP socket layer initialized
+[   26.758335] Bluetooth: SCO socket layer initialized
+[   26.861127] ycy clk_bass_vir 0x100  is ffffff80013f8100, the value:0
+[   26.864218] Bluetooth: HCI UART driver ver 2.2
+[   26.864223] Bluetooth: HCI H4 protocol initialized
+[   26.864224] Bluetooth: HCI BCSP protocol initialized
+[   26.864226] Bluetooth: HCILL protocol initialized
+[   26.864227] Bluetooth: HCIATH3K protocol initialized
+[   26.864229] Bluetooth: HCI Three-wire UART (H5) protocol initialized
+[   26.942610] [cedar]: install end!!!
+[   26.953244] Registered IR keymap rc_map_sunxi
+[   26.965810] input: sunxi_ir_recv as /devices/soc.0/1f02000.s_cir/rc/rc0/input6
+[   26.982056] rc0: sunxi_ir_recv as /devices/soc.0/1f02000.s_cir/rc/rc0
+[   27.001786] [VFE]cci probe end cci_sel = 0!
+[   27.013352] IR NEC protocol handler initialized
+[   27.014305] [VFE]cci_init end
+[   27.036914] IR JVC protocol handler initialized
+[   27.104586] [OV5640@lex]init_sensor - frame_rate: 0, max_win_size: 11
+[   27.117213] [OV5640@lex]sensor_probe - frame_rate: 0
+[   27.164558] IR RC5(x) protocol handler initialized
+[   27.164570] IR Sony protocol handler initialized
+[   27.177494] IR RC6 protocol handler initialized
+[   27.197234] input: MCE IR Keyboard/Mouse (sunxi-rc-recv) as /devices/virtual/input/input7
+[   27.213342] IR MCE Keyboard/mouse protocol handler initialized
+[   27.213352] IR SANYO protocol handler initialized
+[   27.245099] lirc_dev: IR Remote Control driver registered, major 249 
+[   27.258960] sunxi-bt bt.28: set block: 0
+[   27.271495] sunxi-bt bt.28: check bluetooth bt_power voltage: 3300000
+[   27.286911] rc rc0: lirc_dev: driver ir-lirc-codec (sunxi-rc-recv) registered at minor = 0
+[   27.288087] sunxi-bt bt.28: check bluetooth io_regulator voltage: 3300000
+[   27.315767] IR LIRC bridge handler initialized
+[   27.539897] [VFE]Welcome to Video Front End driver
+[   27.551061] [VFE]csi probe end csi_sel = 0!
+[   27.561410] [VFE]csi_init end
+[   27.571244] [VFE]isp probe start isp_sel = 0!
+[   27.592077] [ISP] isp platform_id = 3!
+[   27.601865] [VFE]isp probe end isp_sel = 0!
+[   27.612042] [VFE]sunxi_isp_platform_register end
+[   27.622936] [VFE]mipi probe start mipi_sel = 0!
+[   27.633930] [VFE]mipi probe end mipi_sel = 0!
+[   27.643984] [VFE]mipi_init end
+[   27.652392] [VFE]flash_init end
+[   27.661538] [VFE]pdev->id = 0
+[   27.669595] [VFE]dev->vip_sel = 0
+[   27.677963] [VFE_WARN]fetch csi0_dev0_twi_id from device_tree failed
+[   27.689736] [VFE_WARN]fetch csi0_dev0_afvdd from device_tree failed
+[   27.701367] [VFE_WARN]fetch csi0_dev0_afvdd_vol from device_tree failed
+[   27.713322] [VFE_WARN]fetch csi0_dev0_power_en from device_tree failed
+[   27.725188] [VFE_WARN]fetch csi0_dev0_flash_en from device_tree failed
+[   27.736965] [VFE_WARN]fetch csi0_dev0_flash_mode from device_tree failed
+[   27.748917] [VFE_WARN]fetch csi0_dev0_af_pwdn from device_tree failed
+[   27.761297] [VFE]vfe_init end
+[   27.769290] [VFE]probe_work_handle start!
+[   27.778749] [VFE]vfe_runtime_resume
+[   27.802700] [VFE]..........................vfe clk open!.......................
+[   27.815493] [VFE_WARN]vfe dphy clock is null
+[   27.824993] [VFE]v4l2 subdev register input_num = 0
+[   27.835290] [VFE]vfe sensor detect start! input_num = 0
+[   27.845787] [VFE]Find sensor name is "ov5640", i2c address is 78, type is "YUV" !
+[   27.859081] [VFE]Sub device register "ov5640" i2c_addr = 0x78 start!
+[   27.870936] [VFE]v4l2_device_register_subdev return 0
+[   27.881265] [VFE]registered sensor subdev is OK!
+[   27.893443] libphy: 1c30000.eth: probed
+[   27.894430] [VFE]Check sensor!
+[   27.904302] sunxi-gmac 1c30000.eth eth0: eth0: PHY ID 001cc915 at 0 IRQ poll (1c30000.eth-0:00)
+[   27.907171] [OV5640@lex]CSI_SUBDEV_PWR_ON!
+[   27.908429] [VFE]mclk on
+[   27.974831] [OV5640@lex]sensor_init: 0x0
+[   28.190429] [OV5640@lex]AF firmware check status complete, 0x3029 = 0x70
+[   28.190442] [OV5640@lex]CSI_SUBDEV_PWR_OFF!
+[   28.190447] [VFE]mclk off
+[   28.226378] [VFE]Sub device register "ov5640" is OK!
+[   28.227549] [VFE]V4L2 device registered as video0
+[   28.227595] [VFE]vfe_runtime_suspend
+[   28.227600] [VFE]..........................vfe clk close!.......................
+[   28.233714] [VFE]probe_work_handle end!
+[   28.920517] [VFE]vfe_open
+[   28.920541] [VFE]vfe_runtime_resume
+[   28.932551] [VFE]..........................vfe clk open!.......................
+[   28.932561] [VFE_WARN]vfe dphy clock is null
+[   28.932595] [VFE]vfe_open ok
+[   28.932609] [VFE]Set vfe core clk = 216000000, after Set vfe core clk = 200000000 
+[   28.932616] NOT_SUPPORT_THIS_FUNCTION:sun8iw7p1_isp_set_table_addr, line: 372
+[   28.945040] [OV5640@lex]CSI_SUBDEV_PWR_ON!
+[   28.946294] [VFE]mclk on
+[   29.013186] [OV5640@lex]sensor_init: 0x0
+[   29.223480] [OV5640@lex]AF firmware check status complete, 0x3029 = 0x70
+[   29.223794] [VFE]vfe_close
+[   29.223825] [OV5640@lex]CSI_SUBDEV_PWR_OFF!
+[   29.223831] [VFE]mclk off
+[   29.259846] [VFE]vfe_runtime_suspend
+[   29.259862] [VFE]..........................vfe clk close!.......................
+[   29.266352] [VFE]vfe_close end
+[   33.799282] libphy: 1c30000.eth-0:00 - Link is Up - 1000/Full
+[   41.627618] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   41.627630] Bluetooth: BNEP filters: protocol multicast
+[   41.627661] Bluetooth: BNEP socket layer initialized
+[   53.510133] EXT4-fs (mmcblk0p2): warning: mounting unchecked fs, running e2fsck is recommended
+[   53.512353] EXT4-fs (mmcblk0p2): mounted filesystem without journal. Opts: (null)
+[   53.612143] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+[   55.328069] Bluetooth: RFCOMM TTY layer initialized
+[   55.328116] Bluetooth: RFCOMM socket layer initialized
+[   55.328121] Bluetooth: RFCOMM ver 1.11
+[   56.503421] sunxi-bt bt.28: block state already is 0
+[  150.490494] [VFE]vfe_open
+[  150.490515] [VFE]vfe_runtime_resume
+[  150.502537] [VFE]..........................vfe clk open!.......................
+[  150.502551] [VFE_WARN]vfe dphy clock is null
+[  150.502604] [VFE]vfe_open ok
+[  150.502627] [VFE]Set vfe core clk = 216000000, after Set vfe core clk = 200000000 
+[  150.502641] NOT_SUPPORT_THIS_FUNCTION:sun8iw7p1_isp_set_table_addr, line: 372
+[  150.515078] [OV5640@lex]CSI_SUBDEV_PWR_ON!
+[  150.516345] [VFE]mclk on
+[  150.582109] [OV5640@lex]sensor_init: 0x0
+[  150.792516] [OV5640@lex]AF firmware check status complete, 0x3029 = 0x70
+[  150.792665] [VFE]vfe_close
+[  150.792672] [OV5640@lex]CSI_SUBDEV_PWR_OFF!
+[  150.792677] [VFE]mclk off
+[  150.828636] [VFE]vfe_runtime_suspend
+[  150.828642] [VFE]..........................vfe clk close!.......................
+[  150.834726] [VFE]vfe_close end
+[  150.837714] [VFE]vfe_open
+[  150.837730] [VFE]vfe_runtime_resume
+[  150.849843] [VFE]..........................vfe clk open!.......................
+[  150.849860] [VFE_WARN]vfe dphy clock is null
+[  150.849912] [VFE]vfe_open ok
+[  150.849936] [VFE]Set vfe core clk = 216000000, after Set vfe core clk = 200000000 
+[  150.849951] NOT_SUPPORT_THIS_FUNCTION:sun8iw7p1_isp_set_table_addr, line: 372
+[  150.861278] [OV5640@lex]CSI_SUBDEV_PWR_ON!
+[  150.862560] [VFE]mclk on
+[  150.929946] [OV5640@lex]sensor_init: 0x0
+[  151.156656] [OV5640@lex]AF firmware check status complete, 0x3029 = 0x70
+[  151.166814] [OV5640@lex]sensor_g_ctrl id: 9963793
+[  151.166834] [OV5640@lex]sensor_g_ctrl id: 9963795
+[  151.166843] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.166993] [OV5640@lex]sensor_g_ctrl id: 9963793
+[  151.167013] [OV5640@lex]sensor_g_ctrl id: 9963795
+[  151.167022] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167088] [OV5640@lex]sensor_g_ctrl id: 9967959
+[  151.167098] [OV5640@lex]sensor_g_ctrl id: 9967959 *** EINVAL ***
+[  151.167106] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167119] [OV5640@lex]sensor_g_ctrl id: 9967960
+[  151.167129] [OV5640@lex]sensor_g_ctrl id: 9967960 *** EINVAL ***
+[  151.167137] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167150] [OV5640@lex]sensor_g_ctrl id: 9967961
+[  151.167159] [OV5640@lex]sensor_g_ctrl id: 9967961 *** EINVAL ***
+[  151.167167] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167180] [OV5640@lex]sensor_g_ctrl id: 9967962
+[  151.167189] [OV5640@lex]sensor_g_ctrl id: 9967962 *** EINVAL ***
+[  151.167197] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167210] [OV5640@lex]sensor_g_ctrl id: 9967963
+[  151.167219] [OV5640@lex]sensor_g_ctrl id: 9967963 *** EINVAL ***
+[  151.167227] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167240] [OV5640@lex]sensor_g_ctrl id: 9967964
+[  151.167249] [OV5640@lex]sensor_g_ctrl id: 9967964 *** EINVAL ***
+[  151.167257] [VFE_WARN]v4l2 sub device g_ctrl fail!
+[  151.167314] [OV5640@lex]sensor_g_ctrl id: 10094875
+[  151.167500] [OV5640@lex]sensor_g_ctrl id: 10094875
+[  151.167584] [OV5640@lex]sensor_g_ctrl id: 10094878
+[  151.257022] [OV5640@lex]sensor_s_parm: numerator/denominator = 1/25
+[  151.257034] [OV5640@lex]capture_mode: V4L2_MODE_VIDEO
+[  151.257039] [OV5640@lex]set frame rate: 25 FPS - low_speed: 0
+[  151.257060] [OV5640@lex]sensor_s_fmt
+[  151.257064] [OV5640@lex]capture_mode: V4L2_MODE_VIDEO
+[  151.280099] [OV5640@lex]preview:agc/aec:0x0,gain:0x28,exposurelow:0x0,exposuremid:0x3d,exposurehigh:0x0
+[  151.281735] [OV5640@lex]sensor_s_relaunch_af_zone
+[  151.287981] [OV5640@lex]sensor_s_continueous_af[0x1]
+[  151.392637] [OV5640@lex]s_fmt set width = 640, height = 480 - low_speed: 0
+[  151.393719] [OV5640@lex]0x3037, pre_div = 19
+[  151.393730] [OV5640@lex]0x3037, pre_div & 0x0f = 3
+[  151.393739] [OV5640@lex]0x3037, pre_div = 3
+[  151.393901] [OV5640@lex]0x3036 = 70
+[  151.393911] [OV5640@lex]0x3036, mul = 70
+[  151.394073] [OV5640@lex]0x3035 = 17
+[  151.394083] [OV5640@lex]0x3035, sys_div = 1
+[  151.394244] [OV5640@lex]0x3037, pll_rdiv = 19
+[  151.394254] [OV5640@lex]0x3037, (pll_rdiv & 0x10) >> 4 = 1
+[  151.394263] [OV5640@lex]0x3037, pll_rdiv + 1 = 2
+[  151.394425] [OV5640@lex]0x3034 = 26
+[  151.394435] [OV5640@lex]0x3034, (bit_div & 0x0f) = 10
+[  151.394596] [OV5640@lex]0x3108 = 1
+[  151.394606] [OV5640@lex]0x3108, sclk_rdiv & 0x03 = 1
+[  151.394615] [OV5640@lex]0x3108, sclk_rdiv << sclk_rdiv = 2
+[  151.394627] [OV5640@lex]** pre_div = 3,mul = 70,sys_div = 1,pll_rdiv = 2,sclk_rdiv = 2
+[  151.394637] [OV5640@lex]** pclk = 56000000
+[  151.394646] [OV5640@lex]** pv_pclk = 0
+[  151.394659] [OV5640@lex]pv_fps(30) = pv_pclk(56000000) / ((vts_extra(0) + vts(984)) * hts(1896))
+[  151.394669] [OV5640@lex]pv fps = 30 - ulres = 30
+[  151.394956] [ISP]width_input = 640, height_input = 480, width = 640, height = 480
+[  151.394972] [ISP] full_size width = 640, height = 480, ob_valid = 640, 480
+[  151.394992] [ISP]main_cfg->pix.sizeimage = 462848,main_cfg->pix.width = 640 ,main_cfg->pix.height = 480
+[  151.395004] [VFE]dev->buf_byte_size = 462848, double_ch_flag = 0
+[  151.398116] [VFE]queue_setup, buffer count=4, size=462848
+[  151.442056] [OV5640@lex]sensor_s_parm: numerator/denominator = 1/25
+[  151.442067] [OV5640@lex]capture_mode: V4L2_MODE_VIDEO
+[  151.442072] [OV5640@lex]set frame rate: 25 FPS - low_speed: 0
+[  151.720209] [VFE]capture video mode!
+[  151.752991] [VFE]capture video first frame done!
+[  152.168484] [OV5640@lex]sensor_s_parm: numerator/denominator = 1/25
+[  152.168496] [OV5640@lex]capture_mode: V4L2_MODE_VIDEO
+[  152.168502] [OV5640@lex]set frame rate: 25 FPS - low_speed: 0
+[  152.211962] [VFE]capture video mode!
+[  152.244721] [VFE]capture video first frame done!
+[  161.522153] [VFE]capture video mode!
+[  161.554924] [VFE]capture video first frame done!
+[  161.587708] [VFE]capture video mode!
+[  161.620512] [VFE]capture video first frame done!
+[  161.653277] [VFE]capture video mode!
+[  161.686057] [VFE]capture video first frame done!
+[  161.718845] [VFE]capture video mode!
+[  161.751621] [VFE]capture video first frame done!
+[  161.784401] [VFE]capture video mode!
+[  161.817201] [VFE]capture video first frame done!
+[  161.849968] [VFE]capture video mode!
+[  161.882752] [VFE]capture video first frame done!
+[  161.915543] [VFE]capture video mode!
+[  161.948312] [VFE]capture video first frame done!
+[  161.981140] [VFE]capture video mode!
+[  162.013905] [VFE]capture video first frame done!
+[  162.046660] [VFE]capture video mode!
+[  162.079444] [VFE]capture video first frame done!
+[  162.112224] [VFE]capture video mode!
+[  162.145022] [VFE]capture video first frame done!
+[  162.177805] [VFE]capture video mode!
+[  162.210572] [VFE]capture video first frame done!
+[  162.243361] [VFE]capture video mode!
+[  162.276137] [VFE]capture video first frame done!
+[  162.308927] [VFE]capture video mode!
+[  162.341733] [VFE]capture video first frame done!
+[  162.374496] [VFE]capture video mode!
+[  162.407294] [VFE]capture video first frame done!
+[  162.440059] [VFE]capture video mode!
+[  162.472865] [VFE]capture video first frame done!
+[  162.505612] [VFE]capture video mode!
+[  162.538427] [VFE]capture video first frame done!
+[  162.571195] [VFE]capture video mode!
+[  162.603976] [VFE]capture video first frame done!
+[  162.636761] [VFE]capture video mode!
+[  162.669544] [VFE]capture video first frame done!
+[  162.702307] [VFE]capture video mode!
+[  162.735090] [VFE]capture video first frame done!
+[  162.767891] [VFE]capture video mode!
+[  162.800657] [VFE]capture video first frame done!
+[  162.833469] [VFE]capture video mode!
+[  162.866262] [VFE]capture video first frame done!
+[  162.899012] [VFE]capture video mode!
+[  162.931782] [VFE]capture video first frame done!
+[  279.538722] [VFE]capture video mode!
+[  279.571507] [VFE]capture video first frame done!
+[  279.604321] [VFE]capture video mode!
+[  279.637063] [VFE]capture video first frame done!
+[  322.278977] [VFE]vfe_close
+[  322.278996] [OV5640@lex]CSI_SUBDEV_PWR_OFF!
+[  322.279002] [VFE]mclk off
+[  322.315174] [VFE]vfe_runtime_suspend
+[  322.315191] [VFE]..........................vfe clk close!.......................
+[  322.321306] [VFE]vfe_close end
