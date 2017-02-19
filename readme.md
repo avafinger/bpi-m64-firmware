@@ -4,11 +4,7 @@ Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 
 	Kernel has been updated to version 3.10.104, see **Updating Kernel section**
 
-
-
-
 	LCD 7" with Touch for testing, see **LCD 7" with Touch Screen section**
-
 
 
 
@@ -411,10 +407,12 @@ Initial setup
     and set it to 720p or any other HDMI mode inside the DTB.
 
 
-	There is a DTB with support for 720P:
-	rename the file /media/boot/a64/a64-2GB.dtb to /media/boot/a64/a64-2GB.dtb_1080P
-	copy the file a64-2GB_720P.dtb to /media/boot/a64/a64-2GB.dtb
-	*boot the board with this new file
+
+		There is a DTB with support for 720P:
+		rename the file /media/boot/a64/a64-2GB.dtb to /media/boot/a64/a64-2GB.dtb_1080P
+		copy the file a64-2GB_720P.dtb to /media/boot/a64/a64-2GB.dtb
+		*boot the board with this new file
+
 
 
 
