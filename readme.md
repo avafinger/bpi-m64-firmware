@@ -5,6 +5,13 @@ Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 	Kernel has been updated to version 3.10.104, see **Updating Kernel section**
 
 
+
+
+	LCD 7" with Touch for testing, see **LCD 7" with Touch Screen section**
+
+
+
+
 LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
 and fast and uses less RAM and less CPU while being a feature rich desktop environment.
 
@@ -24,6 +31,7 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - OV5640 (camera)
 - HDMI 1080P
 - GbE (Gigabit ethernet)
+- LCD 7" with Touch Screen (Not tested!)
 
 This OS image is based on the works and ideas of
 -------------------------------------------------
@@ -200,6 +208,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 If you find wrong or misleading information, please let me know and i will fix ASAP.
 
+
 Updating Kernel to 3.10.104
 ---------------------------
 
@@ -341,16 +350,72 @@ The update will be done manually as below:
     Reboot: sudo reboot
 
 
+
+LCD 7" with Touch Screen (not tested)
+-------------------------------------
+
+This is the instructions to work with LCD 7" (S070WV20_MIPI_RGB) and Touch Screen.
+The file a64-2GB_LCD_TOUCH.dtb ( https://github.com/avafinger/bpi-m64-firmware/blob/master/a64-2GB_LCD_TOUCH.dtb )
+This DTB file has supportfor LCD and Touch.
+
+1.  Instructions (type in command from your HOST PC)
+
+    a.  **Rename a64-2GB_LCD_TOUCH.dtb to a64-2GB.dtb**
+
+
+		mv /media/boot/a64/a64-2GB.dtb /media/boot/a64/a64-2GB.dtb_1080P
+		cp -fv a64-2GB_LCD_TOUCH.dtb /media/boot/a64/a64-2GB.dtb
+
+
+
+    b.  **Edit and Add the Touch support**
+
+
+		leafpad (or your editor) /media/rootfs/etc/modules
+		add: ft5x_ts
+
+
+
+    c.  **Add TSLIB support or evdev Support**
+
+    In order to X11 accepts touch screen you will need TSLIB support or EVDEV support.
+    You can follow this for TSLIB: https://github.com/avafinger/pine64-touchscreen
+    Change the file xorg.conf for something like this:
+
+
+
+		# Bpi M64 TS - no need for calibration with TSLIB
+		# no need for uvdev
+		Section "InputClass"
+			Identifier "M64-Touchscreen"
+		#	MatchIsTouchscreen "on"
+			MatchDevicePath "/dev/input/event*"
+			MatchProduct "ft5x_ts"
+			Driver "tslib"
+		#	Option "Mode" "Absolute"
+		EndSection
+
+
+
+    or use evdev
+
 Initial setup
 -------------
 
 1.  DHCP is activated by default
 
 2.  Eth0 is not managed, if you connect using Wifi and later wish to get back
-    to DHCP you must issue a ifdown and ifup command to renew DHCP
+    to DHCP you must issue a ifdown and ifup command to renew DHCP.
 
 3.  Output mode is HDMI 1080p60 , to change it to 720p you need to generate a new DTB
-    and set it to 720p or any other HDMI mode inside the DTB
+    and set it to 720p or any other HDMI mode inside the DTB.
+
+
+	There is a DTB with support for 720P:
+	rename the file /media/boot/a64/a64-2GB.dtb to /media/boot/a64/a64-2GB.dtb_1080P
+	copy the file a64-2GB_720P.dtb to /media/boot/a64/a64-2GB.dtb
+	*boot the board with this new file
+
 
 
 mini FAQ (Ubuntu Xenial 16.04)
