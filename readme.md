@@ -370,6 +370,11 @@ This DTB file has supportfor LCD and Touch.
 		leafpad (or your editor) /media/rootfs/etc/modules
 		add: ft5x_ts
 
+     
+
+		copy ft5x_ts.ko to your SD card:
+		cp -vf ft5x_ts.ko /media/rootfs/lib/modules/3.10.102/kernel/drivers/input/touchscreen/ft5x/ft5x_ts.ko
+
 
 
     c.  **Add TSLIB support or evdev Support**
