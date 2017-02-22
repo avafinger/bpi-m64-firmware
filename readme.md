@@ -437,13 +437,10 @@ This DTB file has supportfor LCD and Touch.
 		add: ft5x_ts
 
 
-
-         get ft5x_ts.ko and place it in the correct path:
-
+	get ft5x_ts.ko and place it in the correct path:
 
 
  		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ft5x_ts.ko
-
 
 
 
@@ -451,17 +448,16 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-		mkdir -p /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
+		sudo mkdir -p /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
 		sudo cp -vf ft5x_ts.ko /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
 
 
 
 
-        copy ft5x_ts.ko to your eMMC:
+	copy ft5x_ts.ko to your eMMC:
 
 
-
-		mkdir -p /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
+		sudo mkdir -p /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
 		sudo cp -vf ft5x_ts.ko /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
 
 
