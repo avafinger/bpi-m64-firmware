@@ -135,6 +135,9 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
     b.  **Get the kernel and check MD5**
 
+    Get the files via browser:
+
+
             Use the browser to download: 
             https://drive.google.com/open?id=0B7A7OPBC-aN7blVEcjk5aFppZG8
             or
@@ -150,6 +153,23 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
             md5sum boot_m64_rc3.tar.gz 
             7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
+
+
+
+    alternatively use wget:
+
+
+	    wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.000
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.001
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.002
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.003
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.004
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.005
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.006
+            cat rootfs.tar.gz.* > rootfs_m64_rc3.tar.gz
+            md5sum rootfs_m64_rc3.tar.gz 
+            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
+
 
 
     c.  **Insert a new SD card (get a good one, 8 GB or > )**
