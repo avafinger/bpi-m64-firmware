@@ -438,11 +438,31 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-         ft5x_ts.ko place:
+         get ft5x_ts.ko and place it in the correct path:
 
- 
-		copy ft5x_ts.ko to your SD card:
-		cp -vf ft5x_ts.ko /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/ft5x_ts.ko
+
+
+ 		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ft5x_ts.ko
+
+
+
+
+	copy ft5x_ts.ko to your SD card:
+
+
+
+		mkdir -p /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
+		sudo cp -vf ft5x_ts.ko /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
+
+
+
+
+        copy ft5x_ts.ko to your eMMC:
+
+
+
+		mkdir -p /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
+		sudo cp -vf ft5x_ts.ko /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
 
 
 
