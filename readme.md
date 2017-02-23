@@ -453,14 +453,14 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-        update modules dep:
+	update modules dep:
 
 
 		sudo depmod
 
 
 
-        load module ft5x_ts to make sure it is working:
+	load module ft5x_ts to make sure it is working:
 
 
 
@@ -468,8 +468,8 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-        see if all modules has been loaded:
-        lsmod
+	see if all modules has been loaded:
+	lsmod
 
 
 		Module                  Size  Used by
@@ -510,14 +510,14 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-        update modules dep:
+	update modules dep:
 
 
 		sudo depmod
 
 
 
-        load module ft5x_ts to make sure it is working:
+	load module ft5x_ts to make sure it is working:
 
 
 
@@ -525,8 +525,8 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-        see if all modules has been loaded:
-        lsmod
+	see if all modules has been loaded:
+	lsmod
 
 
 		Module                  Size  Used by
