@@ -453,6 +453,54 @@ This DTB file has supportfor LCD and Touch.
 
 
 
+        update modules dep:
+
+
+		sudo depmod
+
+
+
+        load module ft5x_ts to make sure it is working:
+
+
+
+		sudo modprobe ft5x_ts
+
+
+
+        see if all modules has been loaded:
+        lsmod
+
+
+		Module                  Size  Used by
+		ft5x_ts                76213  0
+		rfcomm                 41308  12
+		bnep                   18807  2
+		ir_lirc_codec          13350  0
+		lirc_dev               18895  1 ir_lirc_codec
+		ir_mce_kbd_decoder     13330  0
+		ir_sanyo_decoder       12869  0
+		ir_rc6_decoder         12871  0
+		ir_jvc_decoder         12811  0
+		ir_sony_decoder        12786  0
+		ir_rc5_decoder         12757  0
+		ir_nec_decoder         12892  0
+		sunxi_ir_rx            14684  0
+		vfe_v4l2              773139  0
+		ss                     45757  0
+		cedar_ve               20392  0
+		videobuf2_dma_contig    20233  1 vfe_v4l2
+		videobuf2_memops       12600  1 videobuf2_dma_contig
+		videobuf2_core         35245  1 vfe_v4l2
+		ov5640                 55857  0
+		dw9714_act             13373  0
+		actuator               12412  1 dw9714_act
+		vfe_io                 44013  3 vfe_v4l2,ov5640,dw9714_act
+		hci_uart               31036  1
+		bluetooth             217400  34 bnep,hci_uart,rfcomm
+		bcmdhd                793075  0
+		cfg80211              430729  1 bcmdhd
+
 
 	copy ft5x_ts.ko to your eMMC:
 
@@ -460,6 +508,55 @@ This DTB file has supportfor LCD and Touch.
 		sudo mkdir -p /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
 		sudo cp -vf ft5x_ts.ko /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
 
+
+
+        update modules dep:
+
+
+		sudo depmod
+
+
+
+        load module ft5x_ts to make sure it is working:
+
+
+
+		sudo modprobe ft5x_ts
+
+
+
+        see if all modules has been loaded:
+        lsmod
+
+
+		Module                  Size  Used by
+		ft5x_ts                76213  0
+		rfcomm                 41308  12
+		bnep                   18807  2
+		ir_lirc_codec          13350  0
+		lirc_dev               18895  1 ir_lirc_codec
+		ir_mce_kbd_decoder     13330  0
+		ir_sanyo_decoder       12869  0
+		ir_rc6_decoder         12871  0
+		ir_jvc_decoder         12811  0
+		ir_sony_decoder        12786  0
+		ir_rc5_decoder         12757  0
+		ir_nec_decoder         12892  0
+		sunxi_ir_rx            14684  0
+		vfe_v4l2              773139  0
+		ss                     45757  0
+		cedar_ve               20392  0
+		videobuf2_dma_contig    20233  1 vfe_v4l2
+		videobuf2_memops       12600  1 videobuf2_dma_contig
+		videobuf2_core         35245  1 vfe_v4l2
+		ov5640                 55857  0
+		dw9714_act             13373  0
+		actuator               12412  1 dw9714_act
+		vfe_io                 44013  3 vfe_v4l2,ov5640,dw9714_act
+		hci_uart               31036  1
+		bluetooth             217400  34 bnep,hci_uart,rfcomm
+		bcmdhd                793075  0
+		cfg80211              430729  1 bcmdhd
 
 
     c.  **Add TSLIB support or evdev Support**
@@ -594,9 +691,11 @@ Troublehooting
 
     c.  **Don't use DVI to HDMI**
 
+    d.  **Press HDMI connector with your finger after boot and see you images pops up on screen**
+
 2.  Moving windows on screen is slow
 
-    **Install Metacity**
+    **Install Metacity over OpenBox**
 
 3.  Camera is not working
 
@@ -612,7 +711,7 @@ Troublehooting
         
         - Mouse should blink twice
 
-        - Ethernet connector will blink and show some activities
+        - Ethernet led connector will blink and show some activities after login
 
         - Your monitor will switch to HDMI 1080p
 
@@ -625,7 +724,6 @@ Troublehooting
     c.  **Check for SD card integrity**
 
         sudo fsck.vfat -a /dev/sdX1 (where X is your SD card letter [b,c..]
-
         sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..]
 
 
@@ -637,3 +735,4 @@ History Log:
 * created on 26/01/2017
 * fix readme (wip)
 * readme with instructions (wip)
+* Add support for LCD 7" and Touch
