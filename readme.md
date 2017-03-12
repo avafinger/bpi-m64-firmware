@@ -74,8 +74,7 @@ Before you start downloading and flashing you should pay attention to this
 
 ## BananaPI M64 Booting linux
 
-![Banana PI BPI-M64 Booting sequence](https://www.youtube.com/embed/djdfH0kGODU/0.jpg)
-(https://youtu.be/djdfH0kGODU)
+[![Banana PI BPI-M64 Booting sequence](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/djdfH0kGODU)
 
 
 Screenshots
