@@ -76,6 +76,9 @@ Before you start downloading and flashing you should pay attention to this
 Screenshots
 -----------
 
+BananaPI M64 Booting linux
+[![Banana PI BPI-M64 Booting sequence](https://www.youtube.com/embed/djdfH0kGODU/0.jpg)](https://youtu.be/djdfH0kGODU)
+
 Kernel 3.10.104 (fix for 'Dirty COW' and camera with AF)
 ![New kernel version 3.10.104](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/new_kernel_3.10.104.png)
 
