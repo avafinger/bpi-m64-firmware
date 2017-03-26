@@ -1,6 +1,7 @@
 Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 ================================================================
 
+	Update: Kernel version 3.10.105 to support Leds, see **Updating Kernel section**
 
 	Kernel has been updated to version 3.10.104, see **Updating Kernel section**
 
@@ -75,6 +76,11 @@ Before you start downloading and flashing you should pay attention to this
 ## BananaPI M64 Booting linux
 
 [![Banana PI BPI-M64 Booting sequence](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/djdfH0kGODU)
+
+
+Support for Leds
+
+[![Banana PI BPI-M64 Led trigger](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/AWNq6apVGZQ)
 
 
 Screenshots
@@ -275,15 +281,15 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 If you find wrong or misleading information, please let me know and i will fix ASAP.
 
 
-Updating Kernel to 3.10.104
----------------------------
+Updating Kernel to 3.10.104 / 3.10.105
+--------------------------------------
 
 You can update to the latest kernel with a fix for the **DIRTY COW** vulnerability
 and some minor improvements on fs, overlays, camera AF, etc..
 
 The update will be done manually as below:
 
-1.  Update SD card with latest kernel 3.10.104
+1.  Update SD card with latest kernel 3.10.104 or 3.10.105
 
     Insert the SD CARD in SDHC card reader with the Image (kernel 3.10.102) on your **HOST PC running linux** and find the correct device number/letter
 
@@ -329,7 +335,7 @@ The update will be done manually as below:
 
 
 
-    c.  **Download the new kernel 3.10.104:**
+    c-1.  **Download the new kernel 3.10.104:**
 
 
 		mkdir -p m64
@@ -345,8 +351,29 @@ The update will be done manually as below:
 		md5sum Image_kernel_3.10.104 
 		6c6a6d426a40224956c8ec017457f067  Image_kernel_3.10.104
 
+    c-2.  **Download the new kernel 3.10.105:**
 
-    d.  **Flash it to SD card:**
+
+		mkdir -p m64
+		cd m64
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/kernel_m64_rc5.tar.gz
+
+		*check MD5SUM, must match this:*
+		md5sum kernel_m64_rc5.tar.gz
+		1aa7db42689cefe1324ba45797d6706d  kernel_m64_rc5.tar.gz
+
+		*check MD5SUM, must match this:*
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/Image_kernel_3.10.105
+		md5sum Image_kernel_3.10.105 
+		cedde88fb3872b864c7f19e4b3eefa71  Image_kernel_3.10.105
+
+		*check MD5SUM, must match this:*
+		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/a64-2GB.dtb_leds
+		md5sum a64-2GB.dtb_leds
+		bfda28581f2a87617fb32e1e5d9dd676  a64-2GB.dtb_leds
+
+
+    d-1.  **Flash it to SD card:**
 
 		
 		Please, change the correct path to your /media/?/boot where ? may be your [USER]
@@ -359,9 +386,33 @@ The update will be done manually as below:
 		sudo tar -xvpzf kernel_m64_rc3.tar.gz -C /media/rootfs/lib/modules --numeric-ow
 		sync
 
+    d-2.  **Flash it to SD card: (flashing 3.10.105 over 3.10.104)**
+
+		
+		Please, change the correct path to your /media/?/boot where ? may be your [USER]
+
+		*note we need to backup Image in case something goes wrong*
+		mv /media/boot/a64/Image /media/boot/a64/Image_kernel_3.10.104
+		cp -vf Image_kernel_3.10.105 /media/boot/a64/Image
+		sync
+
+		sudo tar -xvpzf kernel_m64_rc5.tar.gz -C /media/rootfs/lib/modules --numeric-ow
+		sync
 
 
-    e.  **If everything is correct, unmount your SD card and boot the bpi-m64 with the SD card**
+    e.  **Update DTB to activate the Blue and Green Leds**
+
+		
+		Please, change the correct path to your /media/?/boot where ? may be your [USER]
+
+		*note we need to backup in case something goes wrong*
+		mv /media/boot/a64/a64-2GB.dtb /media/boot/a64/a64-2GB.dtb_old
+		cp -vf a64-2GB.dtb_leds /media/boot/a64/a64-2GB.dtb
+		sync
+
+
+
+    f.  **If everything is correct, unmount your SD card and boot the bpi-m64 with the SD card**
 
 
 
@@ -730,6 +781,8 @@ Troublehooting
         sudo fsck.vfat -a /dev/sdX1 (where X is your SD card letter [b,c..]
         sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..]
 
+    d. ** DO NOT ** Power the board with microUSB, use the DCIN
+
 
 *** WIP ***
 
@@ -740,3 +793,4 @@ History Log:
 * fix readme (wip)
 * readme with instructions (wip)
 * Add support for LCD 7" and Touch
+* support for Leds
