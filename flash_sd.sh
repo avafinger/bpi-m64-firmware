@@ -25,9 +25,16 @@ function pt_ok()
 SDCARD="$1"
 
 if [ -z "$SDCARD" ]; then
-    pt_error "Usage: $0 <SD card> (SD CARD: /dev/sdX  or /dev/mmcblkX where X is your sd card number)"
+    pt_error "Usage: $0 <SD card> (SD CARD: /dev/sdX  where X is your sd card number or /dev/mmcblkX where X is a letter)"
     exit 1
 fi
+
+if [ $UID -ne 0 ]
+    then
+    pt_error "Please run as root."
+    exit
+fi
+
 
 pt_info "Umounting $out, please wait..."
 umount ${SDCARD}* >/dev/null 2>&1
