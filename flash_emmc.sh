@@ -46,7 +46,7 @@ rm -fR erootfs
 
 mkdir eboot
 mount /dev/mmcblk0p1 eboot
-tar -xvzf boot_m64_rc3.tar.gz -C ./eboot --numeric-ow
+tar -xvzf boot_m64_rc3.tar.gz -C ./eboot
 sync
 umount eboot
 rm -fR eboot

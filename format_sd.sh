@@ -29,6 +29,13 @@ if [ -z "$out" ]; then
     exit 1
 fi
 
+if [ $UID -ne 0 ]
+    then
+    pt_error "Please run as root."
+    exit
+fi
+
+
 pt_info "Umounting $out, please wait..."
 sync
 umount ${out}* >/dev/null 2>&1

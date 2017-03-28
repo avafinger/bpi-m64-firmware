@@ -57,7 +57,7 @@ rm -fR erootfs
 set +e
 mkdir eboot
 mount $SDCARD"1" eboot
-tar -xvpzf boot_m64_rc3.tar.gz -C ./eboot --numeric-ow
+tar -xvpzf boot_m64_rc3.tar.gz -C ./eboot
 sync
 umount eboot
 rm -fR eboot
