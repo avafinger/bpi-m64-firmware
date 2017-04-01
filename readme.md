@@ -151,7 +151,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             sudo apt-get install md5sum
             sudo apt-get install git
 
-2a.  Download the files entirely with git 
+2.  Download the files entirely with git 
 
     a.  **In shell type (host PC):**
 
@@ -198,7 +198,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 **OR**
 
 
-2b.  Download the files manually and check MD5
+3.  Download the files manually and check MD5
 
     a.  **In shell type (host PC):**
 
@@ -281,10 +281,22 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
   
             user: ubuntu
             pass: ubuntu
-  
-3.  Flashing eMMC
 
-    a.  **After you boot up with SD card, type:**
+4.  Flashing eMMC (the git way)  
+
+    a.  **In shell type (host PC):**
+
+            git clone https://github.com/avafinger/bpi-m64-firmware
+            cd bpi-m64-firmware
+
+
+
+**OR mnually**
+
+
+5.  Flashing eMMC (mannually)
+
+    a.  **After you boot up with SD card, in shell type:**
 
             mkdir -p m64
             cd m64
@@ -336,14 +348,16 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
 
 
+6.  Flash the OS Image
 
-    c.  **Start flashing... (eMMC)**
+    a.  **Start flashing... (eMMC)**
 
             sudo chmod +x *.sh
             sudo ./format_emmc.sh
             sudo ./flash_emmc.sh
 
     If everything is OK you can now shutdown and boot up without the SD card.
+
 
 
 If you find wrong or misleading information, please let me know and i will fix ASAP.
