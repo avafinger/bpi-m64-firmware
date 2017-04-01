@@ -145,7 +145,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 ### Manual installation (download the binaries)
 
-1.  We need wget,md5sum and fdisk, install it if not already
+1.  We need wget,md5sum and fdisk, install it if not already on your distro
 
             sudo apt-get install wget
             sudo apt-get install md5sum
@@ -153,11 +153,50 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 2a.  Download the files entirely with git 
 
+    a.  **In shell type (host PC):**
+
             git clone https://github.com/avafinger/bpi-m64-firmware
             cd bpi-m64-firmware
 
 
+    b.  **Insert a new SD card (get a good one, 8 GB or > )**
+
+
+    c.  **Find your SD card**
+
+
+            dmesg|tail
+            [97286.659006] sdc: detected capacity change from 15523119104 to 0
+            [99023.137526] sd 4:0:0:0: [sdc] 30318592 512-byte logical blocks: (15.5 GB/14.4 GiB)
+            [99023.147516] sd 4:0:0:0: [sdc] No Caching mode page found
+            [99023.147521] sd 4:0:0:0: [sdc] Assuming drive cache: write through
+            [99023.162514] sd 4:0:0:0: [sdc] No Caching mode page found
+            [99023.162518] sd 4:0:0:0: [sdc] Assuming drive cache: write through
+            [99023.168535]  sdc: sdc1 sdc2
+
+
+        in this example our sd card is /dev/sdc if we use an SD CARD reader (USB), it could be /dev/sdb if you have only one HDD on your host PC
+        so the format is something like /dev/sdX where X is [b,c,d..,g]
+
+
+    d.  **Start flashing... (Warning, make sure you get the correct device or you may WIPE your HDD)**
+
+
+            sudo chmod +x *.sh
+            sudo ./format_sd.sh /dev/sdc
+            sudo ./flash_sd.sh /dev/sdc
+
+
+    Now you have SD card with kernel in it, you can now boot up bpi-m64 with this SD card and it will detect the eMMC:
+
+  
+            user: ubuntu
+            pass: ubuntu
+
+
+
 **OR**
+
 
 2b.  Download the files manually and check MD5
 
@@ -169,6 +208,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
             wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_sd.sh
             wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_sd.sh
+
 
 
     b.  **Get the kernel and check MD5**
