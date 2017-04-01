@@ -159,10 +159,21 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
             cd bpi-m64-firmware
 
 
-    b.  **Insert a new SD card (get a good one, 8 GB or > )**
+    b. Rebuild boot and rootfs and check MD5 (must match)
+
+            cat rootfs.tar.gz.* > rootfs_m64_rc3.tar.gz
+            md5sum rootfs_m64_rc3.tar.gz 
+            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
+
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/boot_m64_rc3.tar.gz
+            md5sum boot_m64_rc3.tar.gz 
+            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
 
 
-    c.  **Find your SD card**
+    c.  **Insert a new SD card (get a good one, 8 GB or > )**
+
+
+    d.  **Find your SD card**
 
 
             dmesg|tail
@@ -179,7 +190,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
         so the format is something like /dev/sdX where X is [b,c,d..,g]
 
 
-    d.  **Start flashing... (Warning, make sure you get the correct device or you may WIPE your HDD)**
+    e.  **Start flashing... (Warning, make sure you get the correct device or you may WIPE your HDD)**
 
 
             sudo chmod +x *.sh
