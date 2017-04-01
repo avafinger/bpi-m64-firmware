@@ -61,9 +61,29 @@ Things you will not find in this image
 - 2D optimization
 
 
+Things you should do after flashing the OS Image
+-----------------------------------------------
+
+- Setup /etc/hostname and /etc/host, see section 7.a and 7.b
+- Update the Ubuntu distro: 
+
+	Run in Shell:
+
+	sudo apt-get update
+	sudo apt-get dist-upgrade
+	sync
+	sudo shutdown -h now (or use Shutdown Button)
+	wait for the led to turn off
+	unplug the power DC
+	wait a few seconds, and power the board again
+
+
+
 Before you start downloading and flashing you should pay attention to this
 --------------------------------------------------------------------------
 
+- Read through all this document to understand the commands and the whole process,
+  It may looks challenging but it is not.
 - We need a linux box to flash the Image into SD CARD, i use LUbuntu 12.04 but could be any distro.
 - Grab a good SD CARD (*), 80% of the issues you may have is due to counterfeit or bad sd card brand.
 - SD/HC Card reader can also be a source of problems writing to a good SD CARD.
@@ -73,12 +93,12 @@ Before you start downloading and flashing you should pay attention to this
 - Make sure you have HDMI (don't use HDMI to DVI if you can).
 - Make sure HDMI is connected to the board very tight or you may experience some flickering or the image will not appear.
 
-## BananaPI M64 Booting linux
+## BananaPI M64 Booting linux (click on the image to see the video)
 
 [![Banana PI BPI-M64 Booting sequence](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/djdfH0kGODU)
 
 
-Support for Leds
+Support for Leds (click on the image to see the video)
 
 [![Banana PI BPI-M64 Led trigger](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/AWNq6apVGZQ)
 
@@ -129,9 +149,17 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
             sudo apt-get install wget
             sudo apt-get install md5sum
+            sudo apt-get install git
+
+2a.  Download the files entirely with git 
+
+            git clone https://github.com/avafinger/bpi-m64-firmware
+            cd bpi-m64-firmware
 
 
-2.  Download the files and check MD5
+**OR**
+
+2b.  Download the files manually and check MD5
 
     a.  **In shell type (host PC):**
 
@@ -475,13 +503,15 @@ This is the instructions to work with LCD 7" (S070WV20_MIPI_RGB) and Touch Scree
 The file a64-2GB_LCD_TOUCH.dtb ( https://github.com/avafinger/bpi-m64-firmware/blob/master/a64-2GB_LCD_TOUCH.dtb )
 This DTB file has supportfor LCD and Touch.
 
+**Update**: Kernel 3.10.105 has Touch already enabled
+
 1.  Instructions (type in command from your HOST PC)
 
-    a.  **Rename a64-2GB_LCD_TOUCH.dtb to a64-2GB.dtb**
+    a.  **Rename a64-2GB_LCD_TOUCH_OK.dtb to a64-2GB.dtb**
 
 
 		mv /media/boot/a64/a64-2GB.dtb /media/boot/a64/a64-2GB.dtb_1080P
-		cp -fv a64-2GB_LCD_TOUCH.dtb /media/boot/a64/a64-2GB.dtb
+		cp -fv a64-2GB_LCD_TOUCH_PK.dtb /media/boot/a64/a64-2GB.dtb
 
 
 
@@ -508,7 +538,7 @@ This DTB file has supportfor LCD and Touch.
 
 
 
-	update modules dep:
+	update modules dep (only if kernel is not 3.10.105):
 
 
 		sudo depmod
@@ -520,6 +550,9 @@ This DTB file has supportfor LCD and Touch.
 
 
 		sudo modprobe ft5x_ts
+
+
+        or add it to /etc/modules
 
 
 
@@ -645,7 +678,7 @@ Initial setup
 2.  Eth0 is not managed, if you connect using Wifi and later wish to get back
     to DHCP you must issue a ifdown and ifup command to renew DHCP.
 
-3.  Output mode is HDMI 1080p60 , to change it to 720p you need to generate a new DTB
+3.  Output mode is HDMI 1080p@60 , to change it to 720p you need to generate a new DTB
     and set it to 720p or any other HDMI mode inside the DTB.
 
 
@@ -734,6 +767,25 @@ mini FAQ (Ubuntu Xenial 16.04)
             sudo reboot
 
 
+7.  How to play with the Leds (led1=Blue and led2=Green)
+
+    a.  **LEDs Blue and Green are accessible in /sys/class/leds/**
+
+            sudo cat /sys/class/leds/led1/trigger
+
+    b.  **To disable or change the LED activity**
+
+            sudo su (password: ubuntu)
+            echo "none" > /sys/class/leds/led1/trigger
+
+    c.  **To enable**
+
+            echo "default-on" > /sys/class/leds/led1/trigger
+
+    d.  **To trigger heartbeat again**
+
+            echo "heartbeat" > /sys/class/leds/led1/trigger
+
 
 Troublehooting
 --------------
@@ -758,6 +810,8 @@ Troublehooting
 
     b.  **The camera connector at the board side is really horrible, you need to make sure the FPC cable touch the contacts (They should change it on next board revision)**
 
+    c. **Make sure you have the correct DTB (Device Tree Blob) with camera enabled, please note the a64-2GB.dtb_leds has camera disbled to allow full Leds control
+
 4.  Board does not boot
 
     a.  **Watch for some signs during normal boot**
@@ -770,20 +824,33 @@ Troublehooting
 
         - Your monitor will switch to HDMI 1080p
 
+        - Led Blue will show a heartbeat activitiy and Green Led will light when eMMC is in use (kernel 3.10.105 only)
+
+
     b.  **If you don't see any of this signs during boot, you most likely have run into the following**
 
         - Bad SD card even if does not show bad track or errors, try with another brand and size
 
-        - PSU Under power or under voltage, use a good PSU, at least 2.5A and 5v output guarantee
+        - PSU Under power or under voltage, use a good PSU, at least 2.5A and 5v output guarantee (**DCIN**)
+
 
     c.  **Check for SD card integrity**
 
-        sudo fsck.vfat -a /dev/sdX1 (where X is your SD card letter [b,c..]
-        sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..]
+        unmount the SD CARD fisrt: 
+        sudo umount /dev/sdX (where X is your SD card letter [b,c..])
+        sudo fsck.vfat -a /dev/sdX1 (where X is your SD card letter [b,c..])
+        sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..])
 
-    d. ** DO NOT ** Power the board with microUSB, use the DCIN
+
+    d. **DO NOT** Power the board with microUSB, use the DCIN (power barrel)
 
 
+
+**Have i missed something or you found wrong or improper information/language grammar or spelling?**
+
+    Just let me know and i fix it ASAP
+
+    
 *** WIP ***
 
 History Log:
