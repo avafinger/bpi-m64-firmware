@@ -26,7 +26,8 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - Wifi
 - BT (bluetooth)
 - OV5640 (camera)
-- HDMI 1080P
+- HDMI 1080P / HDMI 720P
+- HDMI digital sound output / analog sound output jack
 - GbE (Gigabit ethernet)
 - LEDs (Blue and Green) - 3.10.105 only
 - LCD 7" with Touch Screen (Not tested!)
@@ -851,6 +852,72 @@ mini FAQ (Ubuntu Xenial 16.04)
     d.  **To trigger heartbeat again**
 
             echo "heartbeat" > /sys/class/leds/led1/trigger
+
+8.  HDMI Digital sound output or Headphone JACK Analog stereo sound output
+
+    a.  **Edit the file as below for JACK sound output**
+
+            sudo leafpad /etc/asound.conf
+
+    Write:
+
+	pcm.!default {
+	  type hw
+	  card 1
+	  device 0
+	}
+	ctl.!default {
+	  type hw
+	  card 1
+	}
+  
+
+    b.  **Copy the file a64-2GB.dtb_analog_sound_output to /media/ubuntu/boot/a64/ a64-2GB.dtb**
+
+
+    c.  **Edit the file /etc/modules and add**
+
+	# /etc/modules: kernel modules to load at boot time.
+	#
+	# This file contains the names of kernel modules that should be loaded
+	# at boot time, one per line. Lines beginning with "#" are ignored.
+	bcmdhd
+	hci_uart
+	###dw9714_act
+	###ov5640
+	###vfe_v4l2
+	#leds-sunxi
+	sunxi_codec
+	sunxi_i2s
+	sunxi_sndcodec
+	
+
+    **reboot**
+
+    Install alsa-tools:
+
+	sudo apt-get install alsa-tools
+
+    Check the sound cards:
+
+	aplay -l
+
+	**** List of PLAYBACK Hardware Devices ****
+	card 0: sndhdmi [sndhdmi], device 0: SUNXI-HDMIAUDIO sndhdmi-0 []
+	  Subdevices: 1/1
+	  Subdevice #0: subdevice #0
+	card 1: audiocodec [audiocodec], device 0: SUNXI-CODEC codec-aif1-0 []
+	  Subdevices: 1/1
+	  Subdevice #0: subdevice #0
+	card 1: audiocodec [audiocodec], device 1: bb Voice codec-aif2-1 []
+	  Subdevices: 1/1
+	  Subdevice #0: subdevice #0
+	card 1: audiocodec [audiocodec], device 2: bb-bt-clk codec-aif2-2 []
+	  Subdevices: 1/1
+	  Subdevice #0: subdevice #0
+	card 1: audiocodec [audiocodec], device 3: bt Voice codec-aif3-3 []
+	  Subdevices: 1/1
+	  Subdevice #0: subdevice #0
 
 
 Troublehooting
