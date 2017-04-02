@@ -877,37 +877,37 @@ mini FAQ (Ubuntu Xenial 16.04)
 
     c.  **Edit the file /etc/modules and add**
 
-	sunxi_codec
-	sunxi_i2s
-	sunxi_sndcodec
+		sunxi_codec
+		sunxi_i2s
+		sunxi_sndcodec
 	
 
     **reboot**
 
     Install alsa-tools:
 
-	sudo apt-get install alsa-tools
+		sudo apt-get install alsa-tools
 
     Check the sound cards:
 
-	aplay -l
-
-	**** List of PLAYBACK Hardware Devices ****
-	card 0: sndhdmi [sndhdmi], device 0: SUNXI-HDMIAUDIO sndhdmi-0 []
-	  Subdevices: 1/1
-	  Subdevice #0: subdevice #0
-	card 1: audiocodec [audiocodec], device 0: SUNXI-CODEC codec-aif1-0 []
-	  Subdevices: 1/1
-	  Subdevice #0: subdevice #0
-	card 1: audiocodec [audiocodec], device 1: bb Voice codec-aif2-1 []
-	  Subdevices: 1/1
-	  Subdevice #0: subdevice #0
-	card 1: audiocodec [audiocodec], device 2: bb-bt-clk codec-aif2-2 []
-	  Subdevices: 1/1
-	  Subdevice #0: subdevice #0
-	card 1: audiocodec [audiocodec], device 3: bt Voice codec-aif3-3 []
-	  Subdevices: 1/1
-	  Subdevice #0: subdevice #0
+		aplay -l
+	
+		**** List of PLAYBACK Hardware Devices ****
+		card 0: sndhdmi [sndhdmi], device 0: SUNXI-HDMIAUDIO sndhdmi-0 []
+		  Subdevices: 1/1
+		  Subdevice #0: subdevice #0
+		card 1: audiocodec [audiocodec], device 0: SUNXI-CODEC codec-aif1-0 []
+		  Subdevices: 1/1
+		  Subdevice #0: subdevice #0
+		card 1: audiocodec [audiocodec], device 1: bb Voice codec-aif2-1 []
+		  Subdevices: 1/1
+		  Subdevice #0: subdevice #0
+		card 1: audiocodec [audiocodec], device 2: bb-bt-clk codec-aif2-2 []
+		  Subdevices: 1/1
+		  Subdevice #0: subdevice #0
+		card 1: audiocodec [audiocodec], device 3: bt Voice codec-aif3-3 []
+		  Subdevices: 1/1
+		  Subdevice #0: subdevice #0
 
 
 Troublehooting
