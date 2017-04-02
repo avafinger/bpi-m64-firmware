@@ -67,7 +67,7 @@ Things you should do after flashing the OS Image
 - Setup /etc/hostname and /etc/host, see section 7.a and 7.b
 - Update the Ubuntu distro: 
 
-	Run in Shell:
+Run in Shell:
 
 	sudo apt-get update
 	sudo apt-get dist-upgrade
