@@ -28,13 +28,14 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - OV5640 (camera)
 - HDMI 1080P
 - GbE (Gigabit ethernet)
+- LEDs (Blue and Green) - 3.10.105 only
 - LCD 7" with Touch Screen (Not tested!)
 
 This OS image is based on the works and ideas of
 -------------------------------------------------
 
 - Bpi-tools (https://github.com/BPI-SINOVOIP/bpi-tools)
-- Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64) - Updated to 3.10.104
+- Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64) - Updated to 3.10.104 / 3.10.105
 - @tkaiser's script
 - @phelum's BT tools (https://github.com/phelum/CT_Bluetooth)
 - FA's script ideas (http://wiki.friendlyarm.com/wiki/index.php/NanoPi_A64#Make_Your_Own_OS.28Compile_BSP.29)
