@@ -27,7 +27,7 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - BT (bluetooth)
 - OV5640 (camera)
 - HDMI 1080P / HDMI 720P
-- HDMI digital sound output / analog sound output jack
+- HDMI digital sound output / JACK analog stereo sound output
 - GbE (Gigabit ethernet)
 - LEDs (Blue and Green) - 3.10.105 only
 - LCD 7" with Touch Screen (Not tested!)
@@ -877,16 +877,6 @@ mini FAQ (Ubuntu Xenial 16.04)
 
     c.  **Edit the file /etc/modules and add**
 
-	# /etc/modules: kernel modules to load at boot time.
-	#
-	# This file contains the names of kernel modules that should be loaded
-	# at boot time, one per line. Lines beginning with "#" are ignored.
-	bcmdhd
-	hci_uart
-	###dw9714_act
-	###ov5640
-	###vfe_v4l2
-	#leds-sunxi
 	sunxi_codec
 	sunxi_i2s
 	sunxi_sndcodec
