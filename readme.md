@@ -861,15 +861,15 @@ mini FAQ (Ubuntu Xenial 16.04)
 
     Write:
 
-	pcm.!default {
-	  type hw
-	  card 1
-	  device 0
-	}
-	ctl.!default {
-	  type hw
-	  card 1
-	}
+		pcm.!default {
+		  type hw
+		  card 1
+		  device 0
+		}
+		ctl.!default {
+		  type hw
+		  card 1
+		}
   
 
     b.  **Copy the file a64-2GB.dtb_analog_sound_output to /media/ubuntu/boot/a64/ a64-2GB.dtb**
