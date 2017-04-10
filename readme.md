@@ -101,7 +101,7 @@ Fixes
 
 - fix for the codec in DTB, override a64-2GB.dtb with this DTB:
 
-	cp -af a64-2GB.dtb_codec /media/ubuntu/a64-2GB.dtb (make a backup before overriding the file)
+		cp -af a64-2GB.dtb_codec /media/ubuntu/a64-2GB.dtb (make a backup before overriding the file)
 
 	
 
