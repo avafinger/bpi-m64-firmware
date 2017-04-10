@@ -7,7 +7,7 @@ Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 
 	LCD 7" with Touch for testing, see **LCD 7" with Touch Screen section**
 
-
+	Fix: DTB with codec (a64-2GB.dtb_codec)
 
 LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
 and fast and uses less RAM and less CPU while being a feature rich desktop environment.
@@ -94,6 +94,16 @@ Before you start downloading and flashing you should pay attention to this
 - Get a good PSU with at least 2.5A (be on the safe side).
 - Make sure you have HDMI (don't use HDMI to DVI if you can).
 - Make sure HDMI is connected to the board very tight or you may experience some flickering or the image will not appear.
+
+
+Fixes
+-----
+
+- fix for the codec in DTB, override a64-2GB.dtb with this DTB:
+
+	cp -af a64-2GB.dtb_codec /media/ubuntu/a64-2GB.dtb (make a backup before overriding the file)
+
+	
 
 ## BananaPI M64 Booting linux (click on the image to see the video)
 
@@ -984,3 +994,4 @@ History Log:
 * readme with instructions (wip)
 * Add support for LCD 7" and Touch
 * support for Leds
+* Fix for codec on DTB
