@@ -8,6 +8,7 @@ Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 	LCD 7" with Touch for testing, see **LCD 7" with Touch Screen section**
 
 	Fix: DTB with codec (a64-2GB.dtb_codec)
+	     DTB with better audiocodec support (a64-2GB_code2.dtb)
 
 LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
 and fast and uses less RAM and less CPU while being a feature rich desktop environment.
@@ -31,6 +32,7 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - GbE (Gigabit ethernet)
 - LEDs (Blue and Green) - 3.10.105 only
 - LCD 7" with Touch Screen (Not tested!)
+- Support for HW decoding (cedrus H264) - deb files and instructions apart from this image
 
 This OS image is based on the works and ideas of
 -------------------------------------------------
@@ -894,9 +896,9 @@ mini FAQ (Ubuntu Xenial 16.04)
 
     **reboot**
 
-    Install alsa-tools:
+    Install alsa-tools and alsa-base:
 
-		sudo apt-get install alsa-tools
+		sudo apt-get install alsa-base alsa-tools alsa-utils
 
     Check the sound cards:
 
@@ -918,6 +920,16 @@ mini FAQ (Ubuntu Xenial 16.04)
 		card 1: audiocodec [audiocodec], device 3: bt Voice codec-aif3-3 []
 		  Subdevices: 1/1
 		  Subdevice #0: subdevice #0
+
+    d.  Better audiocodec support with this file a64-2GB_codec2.dtb to **/media/ubuntu/boot/a64 a64-2GB.dtb**
+
+	- Install alsa-base and run alsamixer and unmute audiocodec (JACK)
+	- For some weird thing alsa-utils breaks audiocodec, if you have problems with alsactl,
+	  try to remove /etc/asound.conf (item **a.**) and revise alsamixer settings
+	- In my experiments, i had to purge alsa-tools alsa-utils and restart installing againg the alsa
+	  type: sudo apt-get purge alsa-tools alsa-utils alsa-base
+	  reboot
+	  re-install sudo apt-get install alsa-tools alsa-utils alsa-base and run alsamixer to unmute JACK.
 
 
 Troublehooting
@@ -994,4 +1006,5 @@ History Log:
 * readme with instructions (wip)
 * Add support for LCD 7" and Touch
 * support for Leds
-* Fix for codec on DTB
+* Fix for codec on DTB (another attempt)
+* HW decoding (deb files on another repo)
