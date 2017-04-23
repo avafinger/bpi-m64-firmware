@@ -10,6 +10,8 @@ Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 	Fix: DTB with codec (a64-2GB.dtb_codec)
 	     DTB with better audiocodec support (a64-2GB_code2.dtb)
 
+	HW decoding with Cedrus H264
+
 LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
 and fast and uses less RAM and less CPU while being a feature rich desktop environment.
 
@@ -32,7 +34,8 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - GbE (Gigabit ethernet)
 - LEDs (Blue and Green) - 3.10.105 only
 - LCD 7" with Touch Screen (Not tested!)
-- Support for HW decoding (cedrus H264) - deb files and instructions apart from this image
+- Support for HW decoding (cedrus H264) - https://github.com/avafinger/cedrusH264_vdpau_A64
+
 
 This OS image is based on the works and ideas of
 -------------------------------------------------
@@ -55,6 +58,7 @@ Things that works with this Image
 - Guvcview
 - MJPG-streamer (unstable - removed)
 - ffmepg 3.14 with cedrus (H264 encoding)
+- Cedrus H264 Hardware Decoding (https://github.com/avafinger/cedrusH264_vdpau_A64)
 
 Things you will not find in this image
 --------------------------------------
