@@ -1,6 +1,8 @@
 Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 ================================================================
 
+	Update 2: Latest and Greatest kernel with support for the 7" LCD here: https://github.com/avafinger/bpi-m64-firmware-v2
+
 	Update: Kernel version 3.10.105 to support Leds, see **Updating Kernel section**
 
 	Kernel has been updated to version 3.10.104, see **Updating Kernel section**
