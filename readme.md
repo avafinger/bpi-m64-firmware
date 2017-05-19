@@ -35,7 +35,7 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - HDMI digital sound output / JACK analog stereo sound output
 - GbE (Gigabit ethernet)
 - LEDs (Blue and Green) - 3.10.105 only
-- LCD 7" with Touch Screen (Not tested!)
+- LCD 7" with Touch Screen (https://github.com/avafinger/bpi-m64-firmware-v2#7-lcd-support)
 - Support for HW decoding (cedrus H264) - https://github.com/avafinger/cedrusH264_vdpau_A64
 
 
@@ -581,8 +581,13 @@ The update will be done manually as below:
 
 
 
-LCD 7" with Touch Screen (not tested)
+7" LCD with Touch Screen
 -------------------------------------
+
+**Update:**
+
+For a complete 7" LCD support, please go to https://github.com/avafinger/bpi-m64-firmware-v2
+
 
 This is the instructions to work with LCD 7" (S070WV20_MIPI_RGB) and Touch Screen.
 The file a64-2GB_LCD_TOUCH.dtb ( https://github.com/avafinger/bpi-m64-firmware/blob/master/a64-2GB_LCD_TOUCH.dtb )
