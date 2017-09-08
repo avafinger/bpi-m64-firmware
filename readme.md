@@ -32,10 +32,9 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - BT (bluetooth)
 - OV5640 (camera)
 - HDMI 1080P / HDMI 720P
-- HDMI digital sound output / JACK analog stereo sound output
+- HDMI digital sound output / JACK analog stereo sound output (fixed)
 - GbE (Gigabit ethernet)
-- LEDs (Blue and Green) - 3.10.105 only
-- LCD 7" with Touch Screen (https://github.com/avafinger/bpi-m64-firmware-v2#7-lcd-support)
+- LEDs (Red, Blue and Green)
 - Support for HW decoding (cedrus H264) - https://github.com/avafinger/cedrusH264_vdpau_A64
 
 
@@ -43,7 +42,7 @@ This OS image is based on the works and ideas of
 -------------------------------------------------
 
 - Bpi-tools (https://github.com/BPI-SINOVOIP/bpi-tools)
-- Longsleep's kernel 3.10.102 (https://github.com/longsleep/linux-pine64) - Updated to 3.10.104 / 3.10.105
+- Longsleep's kernel 3.10.105 / Bpi sdk-dtb
 - @tkaiser's script
 - @phelum's BT tools (https://github.com/phelum/CT_Bluetooth)
 - FA's script ideas (http://wiki.friendlyarm.com/wiki/index.php/NanoPi_A64#Make_Your_Own_OS.28Compile_BSP.29)
@@ -58,16 +57,15 @@ Things that works with this Image
 
 - Firefox (64 bit) - stock version
 - Guvcview
-- MJPG-streamer (unstable - removed)
-- ffmepg 3.14 with cedrus (H264 encoding)
+- HDMI sound output/ Jack analog sound output
 - Cedrus H264 Hardware Decoding (https://github.com/avafinger/cedrusH264_vdpau_A64)
+- ssh
 
-Things you will not find in this image
---------------------------------------
+Not included in OS Image
+------------------------
 
 - 3D Mali acceleration
 - Firefox with HW acceleration
-- ssh not installed (it is a Desktop Image, if you need it just install it)
 - 2D optimization
 
 
@@ -107,20 +105,16 @@ Before you start downloading and flashing you should pay attention to this
 Fixes
 -----
 
-- fix for the codec in DTB, override a64-2GB.dtb with this DTB:
-
-		cp -af a64-2GB.dtb_codec /media/ubuntu/a64-2GB.dtb (make a backup before overriding the file)
-
-	
-
-## BananaPI M64 Booting linux (click on the image to see the video)
-
-[![Banana PI BPI-M64 Booting sequence](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/djdfH0kGODU)
+- HDMI sound and JACK sound
 
 
-Support for Leds (click on the image to see the video)
+OS Image default
+----------------
 
-[![Banana PI BPI-M64 Led trigger](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/0.jpg)](https://youtu.be/AWNq6apVGZQ)
+- Camera OV5640
+- HDMI 1280x720 (720p) - HD
+- DHCP on GbE	
+
 
 
 Screenshots
@@ -163,9 +157,10 @@ We will do the following steps:
 
 There will be no need for requesting unused space on SD card or eMMC, we don't use '.img' file.
 
-### Manual installation (download the binaries)
+Flashing SD CARD
+----------------
 
-1.  We need wget,md5sum and fdisk, install it if not already on your distro
+1.  We need wget,md5sum and fdisk, please install this packages on your distro if not already installed
 
             sudo apt-get install wget
             sudo apt-get install md5sum
@@ -181,13 +176,12 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
     b. Rebuild boot and rootfs and check MD5 (must match)
 
-            cat rootfs.tar.gz.* > rootfs_m64_rc3.tar.gz
-            md5sum rootfs_m64_rc3.tar.gz 
-            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
+            cat rootfs_m64_a64_rc1.tar.gz.* > rootfs_m64_a64_rc1.tar.gz
+            md5sum rootfs_m64_a64_rc1.tar.gz 
+            a97aecc11ad55bdb0c9e6aabace86056  rootfs_m64_a64_rc1.tar.gz
 
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/boot_m64_rc3.tar.gz
-            md5sum boot_m64_rc3.tar.gz 
-            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
+            md5sum boot_m64_a64_rc1.tar.gz
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
 
 
     c.  **Insert a new SD card (get a good one, 8 GB or > )**
@@ -214,8 +208,7 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
 
             sudo chmod +x *.sh
-            sudo ./format_sd.sh /dev/sdc
-            sudo ./flash_sd.sh /dev/sdc
+            sudo ./burn_sdcard.sh /dev/sdc
 
 
     Now you have SD card with kernel in it, you can now boot up bpi-m64 with this SD card and it will detect the eMMC:
@@ -235,11 +228,11 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
 
             mkdir -p m64
             cd m64
+            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_sd.sh
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_sd.sh
-
+            wget https://github.com/avafinger/a64_bin/raw/master/boot_m64_a64_rc1.tar.gz
+            wget https://github.com/avafinger/a64_bin/raw/master/burn_emmc.sh
+            wget https://github.com/avafinger/a64_bin/raw/master/burn_sdcard.sh
 
 
     b.  **Get the kernel and check MD5**
@@ -247,41 +240,35 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
     Get the files using wget (wget the files in this order):
 
 
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.000
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.001
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.002
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.003
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.004
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.005
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.006
-            cat rootfs.tar.gz.* > rootfs_m64_rc3.tar.gz
-            md5sum rootfs_m64_rc3.tar.gz 
-            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.000
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.001
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.002
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.003
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.004
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.005
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.006
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.007
 
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/boot_m64_rc3.tar.gz
-            md5sum boot_m64_rc3.tar.gz 
-            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
+            cat rootfs_m64_a64_rc1.tar.gz.* > rootfs_m64_a64_rc1.tar.gz
+            md5sum rootfs_m64_a64_rc1.tar.gz 
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
 
-
-
-    Alternatively you can use the browser to download the files and place the files in the m64 directory:
+            md5sum boot_m64_a64_rc1.tar.gz
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
 
 
-            Use the browser to download: 
-            https://drive.google.com/open?id=0B7A7OPBC-aN7blVEcjk5aFppZG8
-            or
-            http://www.mediafire.com/file/gs3u9dq5x5jgbnf/boot_m64_rc3.tar.gz
-            
-            md5sum rootfs_m64_rc3.tar.gz 
-            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
 
-            Use the browser to download: 
-            https://drive.google.com/open?id=0B7A7OPBC-aN7RktMMHo5ekx3Znc
-            or
-            http://www.mediafire.com/file/88561scs78j7bq3/rootfs_m64_rc3.tar.gz
+**Alternatively** 
 
-            md5sum boot_m64_rc3.tar.gz 
-            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
+4.  You can use the [Clone or download] green button to download the ZIP file and UnZip it.
+
+            cd bpi-m64-firmware-master
+            cat rootfs_m64_a64_rc1.tar.gz.* > rootfs_m64_a64_rc1.tar.gz
+            md5sum rootfs_m64_a64_rc1.tar.gz 
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
+
+            md5sum boot_m64_a64_rc1.tar.gz
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
 
 
 
@@ -305,479 +292,105 @@ There will be no need for requesting unused space on SD card or eMMC, we don't u
     e.  **Start flashing... (Warning, make sure you get the correct device or you may WIPE your HDD)**
 
             sudo chmod +x *.sh
-            sudo ./format_sd.sh /dev/sdc
-            sudo ./flash_sd.sh /dev/sdc
+            sudo ./burn_sdcard.sh /dev/sdc
 
     Now you have SD card with kernel in it, you can now boot up bpi-m64 with this SD card and it will detect the eMMC:
   
             user: ubuntu
             pass: ubuntu
 
-4.  Flashing eMMC (the git way)  
 
-    a.  **In shell type (host PC):**
+
+Flashing eMMC
+-------------
+
+1.  Using git
+
+    a.  **In shell type (after you boot bpi-m64 with SD CARD):**
 
             git clone https://github.com/avafinger/bpi-m64-firmware
             cd bpi-m64-firmware
 
 
+    b. Rebuild boot and rootfs and check MD5 (must match)
+
+            cat rootfs_m64_a64_rc1.tar.gz.* > rootfs_m64_a64_rc1.tar.gz
+            md5sum rootfs_m64_a64_rc1.tar.gz 
+            a97aecc11ad55bdb0c9e6aabace86056  rootfs_m64_a64_rc1.tar.gz
+
+            md5sum boot_m64_a64_rc1.tar.gz
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
+
+    c.  **Start flashing eMMC... (Warning, make sure you get the correct device or you may WIPE your HDD)**
+
+
+            sudo chmod +x *.sh
+            sudo ./burn_emmc.sh
+
 
 **OR mnually**
 
 
-5.  Flashing eMMC (mannually)
+2.  Flashing eMMC (mannually)
 
     a.  **After you boot up with SD card, in shell type:**
 
             mkdir -p m64
             cd m64
             wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/boot0.bin
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/flash_emmc.sh
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/format_emmc.sh
-
-
-    b.  **Get the kernel and check MD5**
-
-    Get the files using wget (wget the files in this order):
-
-
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.000
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.001
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.002
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.003
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.004
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.005
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs.tar.gz.006
-            cat rootfs.tar.gz.* > rootfs_m64_rc3.tar.gz
-            md5sum rootfs_m64_rc3.tar.gz 
-            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
-
-            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/boot_m64_rc3.tar.gz
-            md5sum boot_m64_rc3.tar.gz 
-            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
+            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
+            wget https://github.com/avafinger/a64_bin/raw/master/boot_m64_a64_rc1.tar.gz
+            wget https://github.com/avafinger/a64_bin/raw/master/burn_emmc.sh
+            wget https://github.com/avafinger/a64_bin/raw/master/burn_sdcard.sh
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.000
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.001
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.002
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.003
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.004
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.005
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.006
+            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.007
 
 
 
-    Alternatively you can use the browser to download the files and place the files in the m64 directory:
+     b.  **Rebuild kernel and check integrity, type:**
+
+            cat rootfs_m64_a64_rc1.tar.gz.* > rootfs_m64_a64_rc1.tar.gz
+            md5sum rootfs_m64_a64_rc1.tar.gz 
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
+
+            md5sum boot_m64_a64_rc1.tar.gz
+            419c74cd6be0533ef31eaa6e6175697d  boot_m64_a64_rc1.tar.gz
 
 
-            Use the browser to download: 
-            https://drive.google.com/open?id=0B7A7OPBC-aN7blVEcjk5aFppZG8
-            or
-            http://www.mediafire.com/file/gs3u9dq5x5jgbnf/boot_m64_rc3.tar.gz
-            
-            md5sum rootfs_m64_rc3.tar.gz 
-            e3d76d7f89e6150904150691031b6461  rootfs_m64_rc3.tar.gz
+     c.  **Start flashing eMMC... (Warning, make sure you get the correct device or you may WIPE your HDD)**
 
-            Use the browser to download: 
-            https://drive.google.com/open?id=0B7A7OPBC-aN7RktMMHo5ekx3Znc
-            or
-            http://www.mediafire.com/file/88561scs78j7bq3/rootfs_m64_rc3.tar.gz
-
-            md5sum boot_m64_rc3.tar.gz 
-            7867f40375fc993f10eaa21cff7843d6  boot_m64_rc3.tar.gz
-
-
-6.  Flash the OS Image
-
-    a.  **Start flashing... (eMMC)**
 
             sudo chmod +x *.sh
-            sudo ./format_emmc.sh
-            sudo ./flash_emmc.sh
+            sudo ./burn_emmc.sh
 
-    If everything is OK you can now shutdown and boot up without the SD card.
 
+    
+     **If everything is OK you can now shutdown and boot up without the SD card.**
 
 
-If you find wrong or misleading information, please let me know and i will fix ASAP.
-
-
-Updating Kernel to 3.10.104 / 3.10.105
---------------------------------------
-
-You can update to the latest kernel with a fix for the **DIRTY COW** vulnerability
-and some minor improvements on fs, overlays, camera AF, etc..
-
-The update will be done manually as below:
-
-1.  Update SD card with latest kernel 3.10.104 or 3.10.105
-
-    Insert the SD CARD in SDHC card reader with the Image (kernel 3.10.102) on your **HOST PC running linux** and find the correct device number/letter
-
-    a.  **type in command line:**
-
-		dmesg | tail
-		[23273.595102] EXT4-fs (sdc2): mounted filesystem without journal. Opts: (null)
-		[24835.068927] sdc: detected capacity change from 15523119104 to 0
-		[26540.804172] sd 4:0:0:0: [sdc] 30318592 512-byte logical blocks: (15.5 GB/14.4 GiB)
-		[26540.814172] sd 4:0:0:0: [sdc] No Caching mode page found
-		[26540.814177] sd 4:0:0:0: [sdc] Assuming drive cache: write through
-		[26540.829166] sd 4:0:0:0: [sdc] No Caching mode page found
-		[26540.829171] sd 4:0:0:0: [sdc] Assuming drive cache: write through
-		[26540.835182]  sdc: sdc1 sdc2
-		[26543.086174] EXT4-fs (sdc2): warning: mounting unchecked fs, running e2fsck is recommended
-		[26544.384752] EXT4-fs (sdc2): mounted filesystem without journal. Opts: (null)	
-
-
-    b.  **From the information above:**
-	
-	Our SD card is in the format /dev/sdX where X is a letter [b,c,d..], in my case is **c**, but if you have
-	only one HDD most likely will be **b**	
-
-
-		ls /media/
-		boot  rootfs
-
-		l /media/*
-		/media/boot:
-		a64/  BPI-M64.txt  Image.version  initrd.img  OV5640_SET.txt  uEnv.txt
-
-		/media/rootfs:
-		bin/   dev/  home/  lost+found/  mnt/  proc/  run/   srv/  tmp/  var/
-		boot/  etc/  lib/   media/       opt/  root/  sbin/  sys/  usr/
-
-
-		**This is my SD card device, make sure you find yours**
-		/dev/sdc1        80M   24M   57M  30% /media/boot
-		/dev/sdc2        15G  2.2G   12G  17% /media/rootfs
-
-
-		In modern distro, you could have it as /media/[USER]/rootfs
-
-
-
-    c-1.  **Download the new kernel 3.10.104:**
-
-
-		mkdir -p m64
-		cd m64
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/kernel_m64_rc3.tar.gz
-
-		*check MD5SUM, must match this:*
-		md5sum kernel_m64_rc3.tar.gz
-		65b77730cf820130c783557698458bd7  kernel_m64_rc3.tar.gz
-
-		*check MD5SUM, must match this:*
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/Image_kernel_3.10.104
-		md5sum Image_kernel_3.10.104 
-		6c6a6d426a40224956c8ec017457f067  Image_kernel_3.10.104
-
-    c-2.  **Download the new kernel 3.10.105:**
-
-
-		mkdir -p m64
-		cd m64
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/kernel_m64_rc5.tar.gz
-
-		*check MD5SUM, must match this:*
-		md5sum kernel_m64_rc5.tar.gz
-		1aa7db42689cefe1324ba45797d6706d  kernel_m64_rc5.tar.gz
-
-		*check MD5SUM, must match this:*
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/Image_kernel_3.10.105
-		md5sum Image_kernel_3.10.105 
-		cedde88fb3872b864c7f19e4b3eefa71  Image_kernel_3.10.105
-
-		*check MD5SUM, must match this:*
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/a64-2GB.dtb_leds
-		md5sum a64-2GB.dtb_leds
-		bfda28581f2a87617fb32e1e5d9dd676  a64-2GB.dtb_leds
-
-
-    d-1.  **Flash it to SD card:**
-
-		
-		Please, change the correct path to your /media/?/boot where ? may be your [USER]
-
-		*note we need to backup Image in case something goes wrong*
-		mv /media/boot/a64/Image /media/boot/a64/Image_kernel_3.10.102
-		cp -vf Image_kernel_3.10.104 /media/boot/a64/Image
-		sync
-
-		sudo tar -xvpzf kernel_m64_rc3.tar.gz -C /media/rootfs/lib/modules --numeric-ow
-		sync
-
-    d-2.  **Flash it to SD card: (flashing 3.10.105 over 3.10.104)**
-
-		
-		Please, change the correct path to your /media/?/boot where ? may be your [USER]
-
-		*note we need to backup Image in case something goes wrong*
-		mv /media/boot/a64/Image /media/boot/a64/Image_kernel_3.10.104
-		cp -vf Image_kernel_3.10.105 /media/boot/a64/Image
-		sync
-
-		sudo tar -xvpzf kernel_m64_rc5.tar.gz -C /media/rootfs/lib/modules --numeric-ow
-		sync
-
-
-    e.  **Update DTB to activate the Blue and Green Leds**
-
-		
-		Please, change the correct path to your /media/?/boot where ? may be your [USER]
-
-		*note we need to backup in case something goes wrong*
-		mv /media/boot/a64/a64-2GB.dtb /media/boot/a64/a64-2GB.dtb_old
-		cp -vf a64-2GB.dtb_leds /media/boot/a64/a64-2GB.dtb
-		sync
-
-
-
-    f.  **If everything is correct, unmount your SD card and boot the bpi-m64 with the SD card**
-
-
-
-2.  Update kernel on eMMC
-
-    a.  **type in command line:**
-
-
-		mkdir -p m64
-       		cd m64
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/kernel_m64_rc3.tar.gz
-
-		*check MD5SUM, must match this:*
-		md5sum kernel_m64_rc3.tar.gz
-		65b77730cf820130c783557698458bd7  kernel_m64_rc3.tar.gz
-
-		*check MD5SUM, must match this:*
-		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/Image_kernel_3.10.104
-		md5sum Image_kernel_3.10.104 
-		6c6a6d426a40224956c8ec017457f067  Image_kernel_3.10.104
-
-
-
-    b.  **Write it to eMMC:**
-
-
-		mv /media/ubuntu/emmcboot/a64/Image /media/ubuntu/emmcboot/a64/Image_kernel_3.10.102
-		cp -vf Image_kernel_3.10.104 /media/ubuntu/emmcboot/a64/Image
-		sync
-
-		sudo tar -xvpzf kernel_m64_rc3.tar.gz -C /media/ubuntu/emmcrootfs/lib/modules --numeric-ow
-		sync
-
-
-
-    c.  **Shutdown and boot without the SD card inserted:**
-
-
-		sudo shutdown -h now
-
-
-
-2.  Restoring kernel 3.10.102
-
-
-    If you find bugs or any instability on kernel 3.10.104 you can always restore kernel 3.10.102
-
-		mv /media/ubuntu/emmcboot/a64/Image /media/ubuntu/emmcboot/a64/Image_kernel_3.10.104
-		cp -vf /media/ubuntu/emmcboot/a64/Image_kernel_3.10.102 /media/ubuntu/emmcboot/a64/Image
-		sync
-
-    Reboot: sudo reboot
-
-
-
-7" LCD with Touch Screen
--------------------------------------
-
-**Update:**
-
-For a complete 7" LCD support, please go to https://github.com/avafinger/bpi-m64-firmware-v2
-
-
-This is the instructions to work with LCD 7" (S070WV20_MIPI_RGB) and Touch Screen.
-The file a64-2GB_LCD_TOUCH.dtb ( https://github.com/avafinger/bpi-m64-firmware/blob/master/a64-2GB_LCD_TOUCH.dtb )
-This DTB file has supportfor LCD and Touch.
-
-**Update**: Kernel 3.10.105 has Touch already enabled
-
-1.  Instructions (type in command from your HOST PC)
-
-    a.  **Rename a64-2GB_LCD_TOUCH_OK.dtb to a64-2GB.dtb**
-
-
-		mv /media/boot/a64/a64-2GB.dtb /media/boot/a64/a64-2GB.dtb_1080P
-		cp -fv a64-2GB_LCD_TOUCH_PK.dtb /media/boot/a64/a64-2GB.dtb
-
-
-
-    b.  **Edit and Add the Touch support**
-
-
-		leafpad (or your editor) /media/rootfs/etc/modules
-		add: ft5x_ts
-
-
-	get ft5x_ts.ko and place it in the correct path:
-
-
- 		wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ft5x_ts.ko
-
-
-
-	copy ft5x_ts.ko to your SD card:
-
-
-
-		sudo mkdir -p /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
-		sudo cp -vf ft5x_ts.ko /media/rootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
-
-
-
-	update modules dep (only if kernel is not 3.10.105):
-
-
-		sudo depmod
-
-
-
-	load module ft5x_ts to make sure it is working:
-
-
-
-		sudo modprobe ft5x_ts
-
-
-        or add it to /etc/modules
-
-
-
-	see if all modules has been loaded:
-	lsmod
-
-
-		Module                  Size  Used by
-		ft5x_ts                76213  0
-		rfcomm                 41308  12
-		bnep                   18807  2
-		ir_lirc_codec          13350  0
-		lirc_dev               18895  1 ir_lirc_codec
-		ir_mce_kbd_decoder     13330  0
-		ir_sanyo_decoder       12869  0
-		ir_rc6_decoder         12871  0
-		ir_jvc_decoder         12811  0
-		ir_sony_decoder        12786  0
-		ir_rc5_decoder         12757  0
-		ir_nec_decoder         12892  0
-		sunxi_ir_rx            14684  0
-		vfe_v4l2              773139  0
-		ss                     45757  0
-		cedar_ve               20392  0
-		videobuf2_dma_contig    20233  1 vfe_v4l2
-		videobuf2_memops       12600  1 videobuf2_dma_contig
-		videobuf2_core         35245  1 vfe_v4l2
-		ov5640                 55857  0
-		dw9714_act             13373  0
-		actuator               12412  1 dw9714_act
-		vfe_io                 44013  3 vfe_v4l2,ov5640,dw9714_act
-		hci_uart               31036  1
-		bluetooth             217400  34 bnep,hci_uart,rfcomm
-		bcmdhd                793075  0
-		cfg80211              430729  1 bcmdhd
-
-
-	copy ft5x_ts.ko to your eMMC:
-
-
-		sudo mkdir -p /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x
-		sudo cp -vf ft5x_ts.ko /media/emmcrootfs/lib/modules/3.10.104/kernel/drivers/input/touchscreen/ft5x/.
-
-
-
-	update modules dep:
-
-
-		sudo depmod
-
-
-
-	load module ft5x_ts to make sure it is working:
-
-
-
-		sudo modprobe ft5x_ts
-
-
-
-	see if all modules has been loaded:
-	lsmod
-
-
-		Module                  Size  Used by
-		ft5x_ts                76213  0
-		rfcomm                 41308  12
-		bnep                   18807  2
-		ir_lirc_codec          13350  0
-		lirc_dev               18895  1 ir_lirc_codec
-		ir_mce_kbd_decoder     13330  0
-		ir_sanyo_decoder       12869  0
-		ir_rc6_decoder         12871  0
-		ir_jvc_decoder         12811  0
-		ir_sony_decoder        12786  0
-		ir_rc5_decoder         12757  0
-		ir_nec_decoder         12892  0
-		sunxi_ir_rx            14684  0
-		vfe_v4l2              773139  0
-		ss                     45757  0
-		cedar_ve               20392  0
-		videobuf2_dma_contig    20233  1 vfe_v4l2
-		videobuf2_memops       12600  1 videobuf2_dma_contig
-		videobuf2_core         35245  1 vfe_v4l2
-		ov5640                 55857  0
-		dw9714_act             13373  0
-		actuator               12412  1 dw9714_act
-		vfe_io                 44013  3 vfe_v4l2,ov5640,dw9714_act
-		hci_uart               31036  1
-		bluetooth             217400  34 bnep,hci_uart,rfcomm
-		bcmdhd                793075  0
-		cfg80211              430729  1 bcmdhd
-
-
-    c.  **Add TSLIB support or evdev Support**
-
-    In order to X11 accepts touch screen you will need TSLIB support or EVDEV support.
-    You can follow this for TSLIB: https://github.com/avafinger/pine64-touchscreen
-    Change the file xorg.conf for something like this:
-
-
-
-		# Bpi M64 TS - no need for calibration with TSLIB
-		# no need for uvdev
-		Section "InputClass"
-			Identifier "M64-Touchscreen"
-		#	MatchIsTouchscreen "on"
-			MatchDevicePath "/dev/input/event*"
-			MatchProduct "ft5x_ts"
-			Driver "tslib"
-		#	Option "Mode" "Absolute"
-		EndSection
-
-
-
-    or use evdev
 
 Initial setup
 -------------
 
 1.  DHCP is activated by default
 
-2.  Eth0 is not managed, if you connect using Wifi and later wish to get back
+2.  Eth0 is setup for DHCP, if you connect using Wifi and later wish to get back
     to DHCP you must issue a ifdown and ifup command to renew DHCP.
 
-3.  Output mode is HDMI 1080p@60 , to change it to 720p you need to generate a new DTB
-    and set it to 720p or any other HDMI mode inside the DTB.
+3.  Output mode is HDMI 720@60 , to change it to 1080p you need to to re-create the symlink
 
 
-
-		There is a DTB with support for 720P:
-		rename the file /media/boot/a64/a64-2GB.dtb to /media/boot/a64/a64-2GB.dtb_1080P
-		copy the file a64-2GB_720P.dtb to /media/boot/a64/a64-2GB.dtb
-		*boot the board with this new file
-
+		cd /media/ubuntu/a64
+                sudo rm m64.dtb
+                sudo ln -s m64_1080p m64.dtb
+                sync
+                sudo reboot
 
 
 
@@ -882,7 +495,7 @@ mini FAQ (Ubuntu Xenial 16.04)
 
             sudo leafpad /etc/asound.conf
 
-    Write:
+    Write or Change accordingly:
 
 		pcm.!default {
 		  type hw
@@ -895,21 +508,9 @@ mini FAQ (Ubuntu Xenial 16.04)
 		}
   
 
-    b.  **Copy the file a64-2GB.dtb_analog_sound_output to /media/ubuntu/boot/a64/ a64-2GB.dtb**
+    b.  **reboot**
 
 
-    c.  **Edit the file /etc/modules and add**
-
-		sunxi_codec
-		sunxi_i2s
-		sunxi_sndcodec
-	
-
-    **reboot**
-
-    Install alsa-tools and alsa-base:
-
-		sudo apt-get install alsa-base alsa-tools alsa-utils
 
     Check the sound cards:
 
@@ -932,15 +533,6 @@ mini FAQ (Ubuntu Xenial 16.04)
 		  Subdevices: 1/1
 		  Subdevice #0: subdevice #0
 
-    d.  Better audiocodec support with this file a64-2GB_codec2.dtb to **/media/ubuntu/boot/a64 a64-2GB.dtb**
-
-	- Install alsa-base and run alsamixer and unmute audiocodec (JACK)
-	- For some weird thing alsa-utils breaks audiocodec, if you have problems with alsactl,
-	  try to remove /etc/asound.conf (item **a.**) and revise alsamixer settings
-	- In my experiments, i had to purge alsa-tools alsa-utils and restart installing againg the alsa
-	  type: sudo apt-get purge alsa-tools alsa-utils alsa-base
-	  reboot
-	  re-install sudo apt-get install alsa-tools alsa-utils alsa-base and run alsamixer to unmute JACK.
 
 
 Troublehooting
@@ -1015,7 +607,7 @@ History Log:
 * created on 26/01/2017
 * fix readme (wip)
 * readme with instructions (wip)
-* Add support for LCD 7" and Touch
 * support for Leds
 * Fix for codec on DTB (another attempt)
 * HW decoding (deb files on another repo)
+* New kernel with better configuration
