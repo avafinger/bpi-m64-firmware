@@ -97,21 +97,21 @@ sleep 2
 
 set -e
 pt_info "Writing to eMMC, please wait..."
-dd if=./ub-m64-emmc.bin conv=notrunc bs=1k seek=8 of=/dev/mmcblk1
+dd if=./ub-m64-emmc.bin conv=notrunc bs=1k seek=8 of=$out
 
 
 mkdir -p erootfs
 sudo partprobe ${out}
 sleep 2
 sync
-sudo mount /dev/mmcblk1p2 erootfs
+sudo mount ${out}p2 erootfs
 tar -xvpzf rootfs_m64_a64_rc1.tar.gz -C ./erootfs --numeric-ow
 sync
 sudo umount erootfs
 rm -fR erootfs
 
 mkdir eboot
-sudo mount /dev/mmcblk1p1 eboot
+sudo mount ${out}p1 eboot
 tar -xvzf boot_m64_a64_rc1.tar.gz -C ./eboot --no-same-owner
 sync
 sudo umount eboot

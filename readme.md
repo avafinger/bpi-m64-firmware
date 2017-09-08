@@ -50,6 +50,11 @@ Things that works with this Image
 - HDMI sound output/ Jack analog sound output
 - Cedrus H264 Hardware Decoding (https://github.com/avafinger/cedrusH264_vdpau_A64)
 - ssh
+- Very low load average with Desktop usage and idle
+
+	ubuntu@bpi-m64:~$ uptime
+ 	08:33:37 up 11:16,  2 users,  load average: 0,02, 0,08, 0,12
+
 
 Not included in OS Image
 ------------------------
@@ -574,13 +579,26 @@ Troublehooting
 
     c.  **Check for SD card integrity**
 
+    Partition is **ext4**, FAT32 has been dropped!
+
         unmount the SD CARD fisrt: 
         sudo umount /dev/sdX (where X is your SD card letter [b,c..])
-        sudo fsck.vfat -a /dev/sdX1 (where X is your SD card letter [b,c..])
+        sudo fsck.ext4 -f /dev/sdX1 (where X is your SD card letter [b,c..])
         sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..])
 
 
-    d. **DO NOT** Power the board with microUSB, use the DCIN (power barrel)
+    d.  **Check for eMMC integrity**
+
+    Partition is **ext4**, FAT32 has been dropped!
+
+    Boot board from SD CARD, unmount eMMC and do a fsck, like so:
+
+        sudo umount /media/ubuntu/boot
+        sudo umount /media/ubuntu/boot
+        sudo fsck.ext4 -f /dev/sdX1 (where X is your SD card letter [b,c..])
+        sudo fsck.ext4 -f /dev/sdX2  (where X is your SD card letter [b,c..])
+     
+    e. **DO NOT** Power the board with microUSB, use the DCIN (power barrel)
 
 
   
