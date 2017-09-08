@@ -1,19 +1,6 @@
 Banana Pi M64 Ubuntu Xenial Xerus 16.04 LXDE OS Image (firmware)
 ================================================================
 
-	Update 2: Latest and Greatest kernel with support for the 7" LCD here: https://github.com/avafinger/bpi-m64-firmware-v2
-
-	Update: Kernel version 3.10.105 to support Leds, see **Updating Kernel section**
-
-	Kernel has been updated to version 3.10.104, see **Updating Kernel section**
-
-	LCD 7" with Touch for testing, see **LCD 7" with Touch Screen section**
-
-	Fix: DTB with codec (a64-2GB.dtb_codec)
-	     DTB with better audiocodec support (a64-2GB_code2.dtb)
-
-	HW decoding with Cedrus H264
-
 LXDE (Lightweight X11 Desktop Environment) is a desktop environment which is lightweight 
 and fast and uses less RAM and less CPU while being a feature rich desktop environment.
 
@@ -23,6 +10,9 @@ Ubuntu MATE on top of this Image and later de-install LXDE.
 I use LXDE just because it is very fast, snappy  and responsive!
 You can always improve, tweak and tune the way you want at any time.
 This is a very LEAN and MEAN OS image to play and learn how to extend it.
+
+
+     **NEW KERNEL and Better HW configuration**
 
 This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 ----------------------------------------------------------------------------
@@ -593,12 +583,7 @@ Troublehooting
     d. **DO NOT** Power the board with microUSB, use the DCIN (power barrel)
 
 
-
-**Have i missed something or you found wrong or improper information/language grammar or spelling?**
-
-    Just let me know and i fix it ASAP
-
-    
+  
 *** WIP ***
 
 History Log:
