@@ -376,9 +376,9 @@ Initial setup
 3.  Output mode is HDMI 720@60 , to change it to 1080p you need to to re-create the symlink
 
 
-		cd /media/ubuntu/a64
+                cd /media/ubuntu/a64
                 sudo rm m64.dtb
-                sudo ln -s m64_1080p m64.dtb
+                sudo ln -s m64.dtb_1080p m64.dtb
                 sync
                 sudo reboot
 
