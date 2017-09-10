@@ -98,6 +98,23 @@ Run in Shell:
         sudo reboot
 
 
+**Fix**
+- The eMMC boot label conflits with SDCARD boot label with previous image, to fix this, type:
+
+       sudo e2label /dev/mmcblk1p1 emmcboot
+ 
+- Script to automate the changing HDMI from 720p to 1080p and vice-ersa
+  Download the script and put it on /media/ubuntu/boot/a64 and /media/ubuntu/emmcboot/a64
+
+        wget https://github.com/avafinger/bpi-m64-firmware/raw/master/set-hdmi-res.sh
+        sudo cp -a set-hdmi-res.sh /media/ubuntu/boot/a64/.
+        sudo cp -a set-hdmi-res.sh /media/ubuntu/emmcboot/a64/.
+
+  then run the script from ././a64/ and chose which HDMI screen resolution for your next boot.
+
+        sudo ./set-hdmi-res.sh
+
+
 Before you start downloading and flashing you should pay attention to this
 --------------------------------------------------------------------------
 
@@ -630,3 +647,5 @@ History Log:
 * Fix for codec on DTB (another attempt)
 * HW decoding (deb files on another repo)
 * New kernel with better configuration
+- Fix eMMC label name
+- Create a script to automate changing HDMI resolution to 720p or 1080p
