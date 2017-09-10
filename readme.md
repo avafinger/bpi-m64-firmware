@@ -81,6 +81,22 @@ Run in Shell:
 	wait a few seconds, and power the board again
 
 
+**Update Wifi firmware for new boards with A1 chip**
+
+- new board revision seems to have Wifi with A1 chip, **firmware update is needed**
+- How do i know if my wifi is A1?
+  It is written on the chip, but if Wifi and BT is not working and your board is new **update**!
+- check if you have **update_wifi_bt.sh**, if not type in Shell:
+
+        wget https://github.com/avafinger/bpm64-firmware/raw/master/update_wifi_bt.sh
+
+- Now run the script to update the firmware and Wifi/BT service
+
+        sudo chmod +x *.sh
+        sudo ./update_wifi_bt.sh
+        sync
+        sudo reboot
+
 
 Before you start downloading and flashing you should pay attention to this
 --------------------------------------------------------------------------
