@@ -256,11 +256,11 @@ Flashing SD CARD
 
             mkdir -p m64
             cd m64
-            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/boot_m64_a64_rc1.tar.gz
-            wget https://github.com/avafinger/a64_bin/raw/master/burn_emmc.sh
-            wget https://github.com/avafinger/a64_bin/raw/master/burn_sdcard.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ub-m64-emmc.bin
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ub-m64-sdcard.bin
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/boot_m64_a64_rc1.tar.gz
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/burn_emmc.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/burn_sdcard.sh
 
 
     b.  **Get the kernel and check MD5**
@@ -268,14 +268,14 @@ Flashing SD CARD
     Get the files using wget (wget the files in this order):
 
 
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.000
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.001
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.002
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.003
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.004
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.005
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.006
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.007
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.000
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.001
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.002
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.003
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.004
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.005
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.006
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.007
 
             cat rootfs_m64_a64_rc1.tar.gz.* > rootfs_m64_a64_rc1.tar.gz
             md5sum rootfs_m64_a64_rc1.tar.gz 
@@ -365,19 +365,19 @@ Flashing eMMC
 
             mkdir -p m64
             cd m64
-            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-emmc.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/ub-m64-sdcard.bin
-            wget https://github.com/avafinger/a64_bin/raw/master/boot_m64_a64_rc1.tar.gz
-            wget https://github.com/avafinger/a64_bin/raw/master/burn_emmc.sh
-            wget https://github.com/avafinger/a64_bin/raw/master/burn_sdcard.sh
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.000
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.001
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.002
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.003
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.004
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.005
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.006
-            wget https://github.com/avafinger/a64_bin/raw/master/rootfs_m64_a64_rc1.tar.gz.007
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ub-m64-emmc.bin
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/ub-m64-sdcard.bin
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/boot_m64_a64_rc1.tar.gz
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/burn_emmc.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/burn_sdcard.sh
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.000
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.001
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.002
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.003
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.004
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.005
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.006
+            wget https://github.com/avafinger/bpi-m64-firmware/raw/master/rootfs_m64_a64_rc1.tar.gz.007
 
 
 
