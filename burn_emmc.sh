@@ -76,7 +76,7 @@ pt_warn "Formating $out ..."
 # Create boot file system
 dd if=/dev/zero bs=1M count=${boot_size} of=${out}p1
 sync
-mkfs.ext4 -F -b 4096 -E stride=2,stripe-width=1024 -L boot ${out}p1
+mkfs.ext4 -F -b 4096 -E stride=2,stripe-width=1024 -L emmcboot ${out}p1
 
 # Create ext4 file system for rootfs
 mkfs.ext4 -F -b 4096 -E stride=2,stripe-width=1024 -L emmcrootfs ${out}p2
