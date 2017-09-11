@@ -88,7 +88,7 @@ Run in Shell:
   It is written on the chip, but if Wifi and BT is not working and your board is new **update**!
 - check if you have **update_wifi_bt.sh**, if not type in Shell:
 
-        wget https://github.com/avafinger/bpm64-firmware/raw/master/update_wifi_bt.sh
+        wget https://raw.githubusercontent.com/avafinger/bpi-m64-firmware/master/update_wifi_bt.sh
 
 - Now run the script to update the firmware and Wifi/BT service
 
@@ -106,7 +106,7 @@ Run in Shell:
 - Script to automate the changing HDMI from 720p to 1080p and vice-ersa
   Download the script and put it on /media/ubuntu/boot/a64 and /media/ubuntu/emmcboot/a64
 
-        wget https://github.com/avafinger/bpi-m64-firmware/raw/master/set-hdmi-res.sh
+        wget https://raw.githubusercontent.com/avafinger/bpi-m64-firmware/master/set-hdmi-res.sh
         sudo cp -a set-hdmi-res.sh /media/ubuntu/boot/a64/.
         sudo cp -a set-hdmi-res.sh /media/ubuntu/emmcboot/a64/.
 
