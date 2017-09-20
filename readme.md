@@ -112,6 +112,7 @@ Run in Shell:
 
   then run the script from ././a64/ and chose which HDMI screen resolution for your next boot.
 
+        sudo chmod +x *.sh
         sudo ./set-hdmi-res.sh
 
 
