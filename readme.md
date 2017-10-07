@@ -26,7 +26,7 @@ This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 - GbE (Gigabit ethernet)
 - LEDs (Red, Blue and Green)
 - Support for HW decoding (cedrus H264) - https://github.com/avafinger/cedrusH264_vdpau_A64
-
+- Support for Point-to-Point Protocol over Ethernet (PPPoE)
 
 This OS image is based on the works and ideas of
 -------------------------------------------------
@@ -114,6 +114,34 @@ Run in Shell:
 
         sudo chmod +x *.sh
         sudo ./set-hdmi-res.sh
+
+
+Kernel Update for PPP / PPPoE
+-----------------------------
+
+This new Kernel includes support for Point-to-Point Protocol over Ethernet (PPPoE) and ADSL lines.
+**fstab** is needed to allow deb packages to update to new kernel with support for PPPoE.
+
+In shell type:
+
+        wget wget https://github.com/avafinger/bpi-m64-firmware/raw/master/fstab
+        sudo cp -vf ./fstab /etc/fstab
+        sync
+        sudo apt-get update
+        sudo apt-get dist-upgrade
+        sync
+        sudo reboot
+
+
+After a reboot, update kernel with:
+
+         wget https://github.com/avafinger/bpi-m64-firmware/raw/master/linux-image-3.10.105-a64_1.0-2.deb
+         sudo dpkg -i linux-image-3.10.105-a64_1.0-2.deb 
+         sync
+         reboot
+
+To be able to use PPPoE you need to load the proper module, or the **pppd** must be configured to load it.
+This will create a device name **/dev/ppp** and you can connect to ADSL or async lines, hopefully.
 
 
 Before you start downloading and flashing you should pay attention to this
@@ -650,3 +678,5 @@ History Log:
 * New kernel with better configuration
 - Fix eMMC label name
 - Create a script to automate changing HDMI resolution to 720p or 1080p
+- Support for PPP / PPPoE
+- Support for Kernel update via deb package
