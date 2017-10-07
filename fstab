@@ -1,0 +1,3 @@
+# FSTAB for Kernel 3.10.105-a64 (sd card and eMMC)
+/dev/mmcblk0p1  /boot   ext4    defaults            0       2
+/dev/mmcblk0p2  /   ext4    defaults,noatime        0       1
