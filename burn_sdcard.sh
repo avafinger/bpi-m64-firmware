@@ -124,7 +124,7 @@ sync
 set +e
 mkdir eboot
 sudo mount $out$part"1" eboot
-tar -xvpzf boot_m64_a64_rc1.tar.gz -C ./eboot  --no-same-owner
+tar -xvpzf boot_m64_a64_rc1.tar.gz -C ./eboot --numeric-ow
 sync
 sudo umount eboot
 rm -fR eboot
