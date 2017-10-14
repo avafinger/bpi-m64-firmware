@@ -124,7 +124,7 @@ This new Kernel includes support for Point-to-Point Protocol over Ethernet (PPPo
 
 In shell type:
 
-        wget wget https://github.com/avafinger/bpi-m64-firmware/raw/master/fstab
+        wget https://github.com/avafinger/bpi-m64-firmware/raw/master/fstab
         sudo cp -vf ./fstab /etc/fstab
         sync
         sudo apt-get update
@@ -260,12 +260,26 @@ Flashing SD CARD
         in this example our sd card is /dev/sdc if we use an SD CARD reader (USB), it could be /dev/sdb if you have only one HDD on your host PC
         so the format is something like /dev/sdX where X is [b,c,d..,g]
 
+        if you have a embedded sd card reader (notebook) you get something like this:
+
+            dmesg|tail
+            [63376.329036] mmc0: new SDHC card at address 1234
+            [63376.368234] mmcblk0: mmc0:1234 SA04G 3.67 GiB 
+            [63376.368372]  mmcblk0: p1 p2
+
+        in this example our sd card is /dev/mmcblk0
+        so the format is something like /dev/mmcblk0X where X is a number [0,1,2..,8]
+
 
     e.  **Start flashing... (Warning, make sure you get the correct device or you may WIPE your HDD)**
 
 
             sudo chmod +x *.sh
             sudo ./burn_sdcard.sh /dev/sdc
+
+            or
+           
+            sudo ./burn_sdcard.sh /dev/mmcblk0
 
 
     Now you have SD card with kernel in it, you can now boot up bpi-m64 with this SD card and it will detect the eMMC:
