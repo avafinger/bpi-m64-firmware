@@ -14,7 +14,18 @@ This is a very LEAN and MEAN OS image to play and learn how to extend it.
 
      **NEW KERNEL and Better HW configuration**
 
-![Experimental Kernel 4.4.](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/kernel4.png)
+[![Experimental Kernel 4.4.](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/kernel4.png)](https://github.com/avafinger/bpi-m64-firmware#new-experimental-lxde-os-image-for-the-banana-pi-n64-with-kernel-4.4.89)
+
+New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
+-------------------------------------------------------------------
+
+- eMMC
+- Wifi
+- HDMI HDMI 720P
+- HDMI digital sound output / JACK analog stereo sound output (fixed)
+- GbE (Gigabit ethernet)
+- LEDs (Red, Blue and Green)
+- Basic OS Image to experiment
 
 This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 ----------------------------------------------------------------------------
