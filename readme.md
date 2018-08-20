@@ -21,8 +21,7 @@ New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
 
 - eMMC
 - Wifi
-- HDMI HDMI 720P
-- HDMI digital sound output / JACK analog stereo sound output (fixed)
+- HDMI 720P
 - GbE (Gigabit ethernet)
 - LEDs (Red, Blue and Green)
 - Basic OS Image to experiment
