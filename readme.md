@@ -611,6 +611,14 @@ mini FAQ (Ubuntu Xenial 16.04)
 Troublehooting
 --------------
 
+If the board some times does not boot or you have a slow boot from SD CARD, chances are you have a broken SD CARD and it is time to replace with a new one.
+If you can boot, check in shell for some messages:
+
+	dmesg|grep sector
+	[    9.965457] end_request: I/O error, dev mmcblk2, sector 372040
+
+if you have this message, throw away this sd card!
+
 1.  Nothing on my LCD/Monitor TV display
 
     a.  **Make sure the HDMI conector is well connected to the board**
