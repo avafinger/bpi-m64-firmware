@@ -14,6 +14,8 @@ This is a very LEAN and MEAN OS image to play and learn how to extend it.
 
      **NEW KERNEL and Better HW configuration**
 
+![Experimental Kernel 4.4.](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/kernel4.png)
+
 This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 ----------------------------------------------------------------------------
 
