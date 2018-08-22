@@ -14,7 +14,8 @@ This is a very LEAN and MEAN OS image to play and learn how to extend it.
 
      **NEW KERNEL and Better HW configuration**
 
-[![Experimental Kernel 4.4.](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/kernel4.png)](https://github.com/avafinger/bpi-m64-firmware#new-experimental-lxde-os-image-for-the-banana-pi-n64-with-kernel-4.4.89)
+[![Experimental Kernel 4.4.](https://github.com/avafinger/bpi-m64-firmware/raw/master/img/kernel4.png)](https://mega.nz/#F!wXwlRRZR!0BCmUo2F2hg7rG4Ax69bkw)
+
 
 New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
 -------------------------------------------------------------------
@@ -24,7 +25,35 @@ New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
 - HDMI 720P
 - GbE (Gigabit ethernet)
 - LEDs (Red, Blue and Green)
-- Basic OS Image to experiment
+- Basic OS Image to experiment to
+
+Things that need to be worked out:
+- Bluetooth
+  You may experience a little delay on the login display due to bluetooth issue, 
+  possible reason is the uart port not in correct state
+- Wifi
+  You need to configure wpa_supplicant in order to connect to your AP.
+  You also need to update wifi firmware to support the A1 chip version, read below
+- ALSA mixer (sndcodec)
+  You need to work out the ALSA from scratch, share your results.
+- Multimedia
+  No hardware decoding / encoding tested on this Image
+- Optimizations
+  This experimental OS image is a raw image, bare minimum configuration set.
+  Language pack, keyboard configuration and localization are not setup up on this Image,
+  you must do it after login
+
+
+SD card OS Image (8GB) is at mega for convenience, use 7zip to unzip and flash using
+your preferred burner/flasher. If you flash this 8GB onto a 16GB or higher density sd card
+use need to extend it to get available space. I will provide additional script and instructions
+when possible, but any other available script on internet will suffice.
+
+OS Image is at: 
+
+	https://mega.nz/#F!wXwlRRZR!0BCmUo2F2hg7rG4Ax69bkw
+
+**Have fun**
 
 This is a preliminary LXDE OS image for the Banana Pi M64 with fully working
 ----------------------------------------------------------------------------
