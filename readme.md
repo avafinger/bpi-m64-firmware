@@ -25,7 +25,7 @@ New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
 - HDMI 720P
 - GbE (Gigabit ethernet)
 - LEDs (Red, Blue and Green)
-- Basic OS Image to experiment to
+- Basic OS Image to experiment with
 
 Things that need to be worked out:
 - Bluetooth
@@ -52,6 +52,15 @@ when possible, but any other available script on internet will suffice.
 OS Image is at: 
 
 	https://mega.nz/#F!wXwlRRZR!0BCmUo2F2hg7rG4Ax69bkw
+
+
+Do this right after login:
+
+
+	sudo apt-get update
+	sudo apt-get dist-upgrade
+
+
 
 **Have fun**
 
