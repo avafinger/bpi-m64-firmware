@@ -52,7 +52,7 @@ set -e
 pt_info "Formating sd card $out ..."
 
 part_position=20480   # KiB
-boot_size=80          # MiB
+boot_size=120          # MiB
 # Create beginning of disk
 pt_info "Zeroing mbr on $out ..."
 dd if=/dev/zero bs=1M count=$((part_position/1024)) of="$out"
