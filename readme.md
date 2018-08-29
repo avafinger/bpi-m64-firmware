@@ -66,7 +66,20 @@ Bluetooth fix:
 
 * Download the deb file **bluetooth-m64_1.0.1.deb** and run in shell 
 
+
 	sudo dpkg -i bluetooth-m64_1.0.1.deb
+
+
+* Issues after login
+	
+	Gmac is powered at the later time just after DHCLIENT tried to get IP address from DHCP
+	and gave up too soon, to force DHCLIENT to renew the IP,  type in the shell:
+
+
+	
+	sudo dhclient -v eth0
+
+
 
 **Have fun**
 
