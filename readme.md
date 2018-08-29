@@ -25,10 +25,11 @@ New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
 - HDMI 720P
 - GbE (Gigabit ethernet)
 - LEDs (Red, Blue and Green)
+- Bluetooth
 - Basic OS Image to experiment with
 
 Things that need to be worked out:
-- Bluetooth
+- Bluetooth (FIXED)
   You may experience a little delay on the login display due to bluetooth issue, 
   possible reason is the uart port not in correct state
 - Wifi
@@ -61,6 +62,11 @@ Do this right after login:
 	sudo apt-get dist-upgrade
 
 
+Bluetooth fix:
+
+* Download the deb file **bluetooth-m64_1.0.1.deb** and run in shell 
+
+	sudo dpkg -i bluetooth-m64_1.0.1.deb
 
 **Have fun**
 
