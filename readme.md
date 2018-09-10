@@ -27,6 +27,7 @@ New Experimental LXDE OS image for the Banana Pi M64 with kernel 4.4.89
 - LEDs (Red, Blue and Green)
 - Bluetooth
 - Basic OS Image to experiment with
+- Kernel code is available at: https://github.com/BPI-SINOVOIP/BPI-M64-bsp-4.4
 
 Things that need to be worked out:
 - Bluetooth (FIXED)
